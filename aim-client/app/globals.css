@@ -2,12 +2,18 @@
 
 @theme {
   --color-primary: #ffffff;
+  --color-secondary: #000000;
+  --color-tertiary: #8D85FF;
   --color-background: #f7f6f5;
   --color-foreground: #222222;
+  --color-accent: #BCEA3E;
 }
 
 .dark {
   --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-tertiary: #8D85FF;
   --color-background: #222222;
   --color-foreground: #f7f6f5;
+  --color-accent: #BCEA3E;
 }
