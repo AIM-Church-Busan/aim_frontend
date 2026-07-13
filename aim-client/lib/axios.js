@@ -5,6 +5,7 @@ import { getToken, removeToken } from "./token";
 
 const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
+    withCredentials: true,
     headers: {
         Accept: "application/json",
     },
@@ -23,11 +24,6 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response?.status === 401) {
-            removeToken();
-            // 로고인 페이지로 리다이렉트 처리
-            window.location.href = "/login";
-        }
         return Promise.reject(error);
     }
 );

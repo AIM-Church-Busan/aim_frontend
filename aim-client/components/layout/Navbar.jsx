@@ -4,6 +4,10 @@ import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { RxChevronDown, RxChevronRight } from "react-icons/rx";
+import ButtonA from "@/components/common/ButtonA"
+import ButtonB from "@/components/common/ButtonB"
+import ButtonC from "@/components/common/ButtonC"
+import ButtonD from "@/components/common/ButtonD";
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -81,22 +85,7 @@ export function Navbar() {
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
               onMouseLeave={useActive.closeOnDesktopDropdownMenu}
             >
-              <button
-                className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
-                onClick={useActive.openOnMobileDropdownMenu}
-              >
-                <span>Join</span>
-                <motion.span
-                  animate={useActive.animateDropdownMenuIcon}
-                  variants={{
-                    rotated: { rotate: 180 },
-                    initial: { rotate: 0 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <RxChevronDown />
-                </motion.span>
-              </button>
+              <ButtonB>Join Us</ButtonB>
               <AnimatePresence>
                 <motion.nav
                   variants={{
@@ -393,14 +382,7 @@ export function Navbar() {
                             </a>
                           </div>
                           <div className="flex items-center">
-                            <Button
-                              title="Sign in"
-                              variant="link"
-                              size="link"
-                              iconRight={<RxChevronRight />}
-                            >
-                              Sign in
-                            </Button>
+                            <ButtonA />
                           </div>
                         </div>
                         <div className="absolute bottom-0 left-0 right-auto top-0 min-w-full bg-background-secondary lg:min-w-[100vw]" />
@@ -709,14 +691,7 @@ export function Navbar() {
                                   Finding hope when life feels uncertain
                                 </p>
                                 <div className="mt-2">
-                                  <Button
-                                    title="Listen"
-                                    variant="link"
-                                    size="link"
-                                    className="text-sm underline"
-                                  >
-                                    Listen
-                                  </Button>
+                                  <ButtonD>Title</ButtonD>
                                 </div>
                               </div>
                             </a>
@@ -741,12 +716,8 @@ export function Navbar() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <Button title="Sign Up" variant="secondary" size="sm">
-              Sign Up
-            </Button>
-            <Button title="Log In" size="sm">
-              Log In
-            </Button>
+            <ButtonA>Sign Up</ButtonA>
+            <ButtonC>Log In</ButtonC>
           </div>
         </div>
         <button
