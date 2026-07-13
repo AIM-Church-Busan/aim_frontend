@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import EventList from "@/features/announcements/components/EventList";
+import CurrentUser from "@/features/announcements/components/CurrentUser";
 
 export default function Home() {
   return (
@@ -59,6 +61,8 @@ export default function Home() {
             Documentation
           </a>
         </div>
+        <EventList />
+        <CurrentUser />
       </main>
     </div>
   );
