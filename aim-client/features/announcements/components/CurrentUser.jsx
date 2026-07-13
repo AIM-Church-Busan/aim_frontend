@@ -9,11 +9,7 @@ export default function EventList() {
 
     return (
         <div>
-            {data.data.map((user) => (
-                <div key={user.id}>
-                    <h2>{user.title}</h2>
-                </div>
-            ))}
+            <h2>{data.name}</h2>
         </div>
     );
 }
