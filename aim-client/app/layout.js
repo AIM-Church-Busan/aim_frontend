@@ -7,6 +7,7 @@ import Providers from "./providers";
 const anonymousPro = Anonymous_Pro({
   subsets: ['latin'],
   weight: ['400', '700'],
+  style: ['normal', 'italic'],
   variable: '--font-anonymous-pro',
 });
 
