@@ -7,6 +7,7 @@
   --color-background: #f7f6f5;
   --color-foreground: #222222;
   --color-accent: #BCEA3E;
+  --color-button: #F4F4F4;
 }
 
 .dark {
@@ -16,4 +17,5 @@
   --color-background: #222222;
   --color-foreground: #f7f6f5;
   --color-accent: #BCEA3E;
+  --color-button: #F4F4F4;
 }

@@ -4,10 +4,10 @@ import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 import { RxChevronDown, RxChevronRight } from "react-icons/rx";
-import ButtonA from "@/components/common/ButtonA"
-import ButtonB from "@/components/common/ButtonB"
-import ButtonC from "@/components/common/ButtonC"
-import ButtonD from "@/components/common/ButtonD";
+import ButtonA from "@/components/common/buttons/ButtonA"
+import ButtonB from "@/components/common/buttons/ButtonB"
+import ButtonC from "@/components/common/buttons/ButtonC"
+import ButtonD from "@/components/common/buttons/ButtonD";
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -46,7 +46,7 @@ export function Navbar() {
   return (
     <section
       id="relume"
-      className="relative z-999 flex min-h-16 w-full items-center border-b border-border-primary bg-background px-[5%] md:min-h-18"
+      className="sticky z-50 top-0 flex min-h-16 w-full items-center border-b border-border-primary bg-background px-[5%] md:min-h-18"
     >
       <div className="mx-auto flex size-full max-w-full items-center justify-between">
         <a href="#">
@@ -85,7 +85,7 @@ export function Navbar() {
               onMouseEnter={useActive.openOnDesktopDropdownMenu}
               onMouseLeave={useActive.closeOnDesktopDropdownMenu}
             >
-              <ButtonB>Join Us</ButtonB>
+              <Button>Join Us</Button>
               <AnimatePresence>
                 <motion.nav
                   variants={{
@@ -352,7 +352,7 @@ export function Navbar() {
                       <div className="max-w-none relative mb-4 flex flex-1 p-6 md:max-w-[50rem] md:p-8 lg:mb-0 lg:max-w-xxs lg:py-8 lg:pl-8 lg:pr-0">
                         <div className="relative z-10 grid w-full grid-cols-1 grid-rows-[auto_max-content] gap-y-4">
                           <h4 className="text-sm font-semibold leading-[1.3]">
-                            More
+                            Latest Messages
                           </h4>
                           <div className="max-w-none grid w-full grid-cols-1 grid-rows-[auto_auto_auto_auto] items-start gap-y-2 md:block">
                             <a href="#" className="flex flex-col py-2">
@@ -364,7 +364,7 @@ export function Navbar() {
                                 />
                               </div>
                               <div className="mt-2 flex max-w-[18rem] flex-col justify-start md:mt-0">
-                                <h5 className="mb-1 font-semibold">About us</h5>
+
                                 <p className="text-sm">
                                   Learn our story and values
                                 </p>
@@ -382,7 +382,7 @@ export function Navbar() {
                             </a>
                           </div>
                           <div className="flex items-center">
-                            <ButtonA />
+
                           </div>
                         </div>
                         <div className="absolute bottom-0 left-0 right-auto top-0 min-w-full bg-background-secondary lg:min-w-[100vw]" />
@@ -668,46 +668,6 @@ export function Navbar() {
                             </div>
                           </a>
                         </div>
-                      </div>
-                      <div className="max-w-none relative mb-4 flex flex-1 p-6 md:max-w-[50rem] md:p-8 lg:mb-0 lg:max-w-xxs lg:py-8 lg:pl-8 lg:pr-0">
-                        <div className="relative z-10 grid w-full grid-cols-1 grid-rows-[auto_max-content] gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Latest messages
-                          </h4>
-                          <div className="max-w-none grid w-full grid-cols-1 grid-rows-[auto_auto_auto_auto] items-start gap-y-2 md:block">
-                            <a href="#" className="flex flex-col py-2">
-                              <div className="relative mb-3 w-full overflow-hidden pt-[56.25%]">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
-                                  alt="Relume placeholder image 2"
-                                  className="absolute inset-0 size-full object-cover"
-                                />
-                              </div>
-                              <div className="mt-2 flex max-w-[18rem] flex-col justify-start md:mt-0">
-                                <h5 className="mb-1 font-semibold">
-                                  Grace in the wilderness
-                                </h5>
-                                <p className="text-sm">
-                                  Finding hope when life feels uncertain
-                                </p>
-                                <div className="mt-2">
-                                  <ButtonD>Title</ButtonD>
-                                </div>
-                              </div>
-                            </a>
-                          </div>
-                          <div className="flex items-center">
-                            <Button
-                              title="All sermons"
-                              variant="link"
-                              size="link"
-                              iconRight={<RxChevronRight />}
-                            >
-                              All sermons
-                            </Button>
-                          </div>
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-auto top-0 min-w-full bg-background-secondary lg:min-w-[100vw]" />
                       </div>
                     </div>
                   </div>
@@ -1092,16 +1052,7 @@ export function Navbar() {
                                   <p className="text-sm">
                                     Lorem ipsum dolor sit amet consectetur elit
                                   </p>
-                                  <div className="mt-2">
-                                    <Button
-                                      title="Read more"
-                                      variant="link"
-                                      size="link"
-                                      className="text-sm underline"
-                                    >
-                                      Read more
-                                    </Button>
-                                  </div>
+
                                 </div>
                               </a>
                             </div>
