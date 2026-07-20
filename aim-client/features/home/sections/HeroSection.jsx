@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import PlayPauseButton from "@/components/common/buttons/PlayPauseButton"
 import Image from "next/image"
 
@@ -9,6 +9,19 @@ const HeroSection = () => {
     const videoRef = useRef(null);
     const [paused, setPaused] = useState(false);
     const [videoError, setVideoError] = useState(false);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const handleError = () => setVideoError(true);
+        video.addEventListener("error", handleError);
+
+        // Event Listener comes first before the src specification. - to prevent race condition
+        video.src = "/main_intro.mp4";
+
+        return () => video.removeEventListener("error", handleError);
+    }, []);
 
     const togglePlay = () => {
         if (paused) {
@@ -31,18 +44,22 @@ const HeroSection = () => {
                         priority
                       />
                   ) : (
-                      <video ref={videoRef} src="/main_intro.mp4" loop autoPlay muted
-                             className="w-full h-full z-0 object-cover"
-                             onError={() => setVideoError(true)}
-                      />
+                      <>
+                          <video ref={videoRef} loop autoPlay muted
+                                 className="w-full h-full z-0 object-cover"
+                                 onError={(e) => {
+                                     console.log("video error!", e);
+                                     setVideoError(true);
+                                 }}
+                          />
+                          <button
+                              onClick={togglePlay}
+                              className="absolute bottom-10 right-16 z-10"
+                          >
+                              <PlayPauseButton paused={paused} />
+                          </button>
+                      </>
               )}
-
-              <button
-                  onClick={togglePlay}
-                  className="absolute bottom-10 right-16 z-10"
-              >
-                  <PlayPauseButton paused={paused} />
-              </button>
           </div>
       </section>
   )
