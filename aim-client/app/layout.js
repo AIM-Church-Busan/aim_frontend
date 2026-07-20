@@ -7,6 +7,7 @@ import Providers from "./providers";
 const anonymousPro = Anonymous_Pro({
   subsets: ['latin'],
   weight: ['400', '700'],
+  style: ['normal', 'italic'],
   variable: '--font-anonymous-pro',
 });
 
@@ -64,7 +65,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${anonymousPro.variable} ${beVietnamPro.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="w-full min-h-full flex flex-col">
       <Providers>
         <Navbar />
         {children}

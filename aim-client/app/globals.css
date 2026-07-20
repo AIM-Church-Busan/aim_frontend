@@ -8,6 +8,9 @@
   --color-foreground: #222222;
   --color-accent: #BCEA3E;
   --color-button: #F4F4F4;
+  --color-gray: #9FA5AF;
+  --font-anonymous: var(--font-anonymous-pro), monospace;
+  --font-vietnam: var(--font-be-vietnam-pro), sans-serif;
 }
 
 .dark {
@@ -18,4 +21,14 @@
   --color-foreground: #f7f6f5;
   --color-accent: #BCEA3E;
   --color-button: #F4F4F4;
+  --color-gray: #9FA5AF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-be-vietnam-pro), sans-serif;
+  margin: 0;
 }
