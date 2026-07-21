@@ -782,11 +782,11 @@ export function Navbar() {
                               </h4>
                               <div className="max-w-none grid w-full grid-cols-1 grid-rows-[auto_auto_auto_auto] items-start gap-y-2 md:block">
                                 <a href="#" className="flex flex-col py-2">
-                                  <div className="relative mb-3 w-full overflow-hidden pt-[56.25%]">
+                                  <div className="relative mb-3 w-full overflow-hidden pt-[56.25%] rounded-2xl">
                                     <img
                                         src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
                                         alt="Relume placeholder image 2"
-                                        className="absolute inset-0 size-full object-cover"
+                                        className="absolute inset-0 size-full object-cover rounded-2xl"
                                     />
                                   </div>
                                   <div className="mt-2 flex max-w-[18rem] flex-col justify-start md:mt-0">
