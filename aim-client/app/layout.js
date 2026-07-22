@@ -2,6 +2,8 @@ import { Anonymous_Pro, Be_Vietnam_Pro } from 'next/font/google';
 import './globals.css';
 import {Navbar} from "@/components/layout/Navbar";
 import Providers from "./providers";
+import Banner from "@/components/layout/Banner";
+import { BannerProvider } from "@/context/BannerContext"
 
 
 const anonymousPro = Anonymous_Pro({
@@ -67,8 +69,11 @@ export default function RootLayout({ children }) {
     >
       <body className="w-full min-h-full flex flex-col">
       <Providers>
-        <Navbar />
-        {children}
+        <BannerProvider>
+          <Banner />
+          <Navbar />
+          {children}
+        </BannerProvider>
       </Providers>
       </body>
     </html>

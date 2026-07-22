@@ -9,7 +9,7 @@ export default function ButtonC({ href, children = 'Get Started', className = ''
 
     const content = (
         <>
-            <span className="absolute left-0 top-full h-full w-full rounded-full bg-lime-400 transition-transform duration-300 group-hover:-translate-y-full" />
+            <span className="absolute left-0 top-full h-full w-full rounded-full bg-accent transition-transform duration-300 group-hover:-translate-y-full" />
             <span className="relative z-10 whitespace-nowrap leading-6 font-anonymous font-semibold text-black">{children}</span>
         </>
     );
