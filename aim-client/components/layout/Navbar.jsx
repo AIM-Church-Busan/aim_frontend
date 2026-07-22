@@ -9,6 +9,8 @@ import { RxChevronDown, RxChevronRight } from "react-icons/rx";
 import ButtonA from "@/components/common/buttons/ButtonA"
 import ButtonC from "@/components/common/buttons/ButtonC"
 import { useBanner } from '@/context/BannerContext'
+import WaveText from "@/components/common/effects/WaveText"
+import FlipText from "@/components/common/effects/FlipText"
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -87,46 +89,31 @@ export function Navbar() {
           </a>
           <div className="absolute hidden h-screen overflow-auto px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0 lg:overflow-visible">
             <div className="flex flex-col items-center lg:flex-row">
-              <a
-                  href="#"
-                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease  ${scrolled ? "text-foreground" : "text-white"}`}
-              >
-                About us
-              </a>
-              <a
-                  href="#"
-                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
-              >
-                Plan your visit
-              </a>
-              <a
-                  href="#"
-                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
-              >
-                Sermons
-              </a>
-              <a
-                  href="#"
-                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
-              >
-                Join
-              </a>
-              <a
-                  href="#"
-                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
-              >
-                Announcements
-              </a>
+              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+                ABOUT US
+              </FlipText>
+              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+                PLAN YOUR VISIT
+              </FlipText>
+              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+                SERMONS
+              </FlipText>
+              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+                JOIN
+              </FlipText>
+              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+                ANNOUNCEMENTS
+              </FlipText>
 
               <div
                   onMouseEnter={useActive.openOnDesktopMoreDropdownMenu}
                   onMouseLeave={useActive.closeOnDesktopMoreDropdownMenu}
               >
                 <button
-                    className={`relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base duration-300 ease ${scrolled ? "text-foreground" : "text-white"}` }
+                    className={`relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base duration-300 ease ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}` }
                     onClick={useActive.openOnMobileMoreDropdownMenu}
                 >
-                  <span>More</span>
+                  <span className="font-anonymous font-bold">MORE</span>
                   <motion.span
                       animate={useActive.animateMoreDropdownMenuIcon}
                       variants={{
@@ -163,15 +150,15 @@ export function Navbar() {
                         <div className="grid flex-1 auto-cols-fr grid-cols-1 gap-x-8 gap-y-6 py-4 md:grid-cols-3 md:gap-y-0 md:py-8 lg:pr-8">
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
                             <h4 className="text-sm font-semibold font-anonymous">
-                              Getting started
+                              GETTING STARTED
                             </h4>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/1"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/1:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -185,11 +172,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/2:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -201,11 +188,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/3"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/3:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -219,11 +206,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/4"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/4:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -236,15 +223,15 @@ export function Navbar() {
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
                             <h4 className="text-sm font-semibold font-anonymous">
-                              Information
+                              INFORMATION
                             </h4>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/5"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/5:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -256,11 +243,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/6"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/6:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -272,11 +259,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/12"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/12:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -288,11 +275,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/7"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/7:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -305,15 +292,15 @@ export function Navbar() {
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
                             <h4 className="text-sm font-semibold font-anonymous">
-                              Resources
+                              RESOURCES
                             </h4>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/8"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/8:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -325,11 +312,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/9"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/9:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -341,11 +328,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/10"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/10:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -359,11 +346,11 @@ export function Navbar() {
                             </a>
                             <a
                                 href="#"
-                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
+                                className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 group/11"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
-                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                  <path className="group-hover/11:fill-accent transition-all duration-300 ease" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
@@ -384,8 +371,8 @@ export function Navbar() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <ButtonA>Sign Up</ButtonA>
-              <ButtonC>Log In</ButtonC>
+              <ButtonA>SIGN UP</ButtonA>
+              <ButtonC>LOG IN</ButtonC>
             </div>
           </div>
 

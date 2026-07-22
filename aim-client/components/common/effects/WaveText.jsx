@@ -14,11 +14,11 @@ const WaveText = ({ children, href, className }) => {
         const split = SplitText.create(textRef.current, { type: "chars" });
 
         gsap.to(split.chars, {
-            y: -8,
-            duration: 0.25,
+            y: -10,
+            duration: 0.2,
             ease: "sine.inOut",
             stagger: {
-                each: 0.03,
+                each: 0.01,
                 yoyo: true,
                 repeat: 1,
             },
