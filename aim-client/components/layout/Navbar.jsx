@@ -2,12 +2,12 @@
 
 import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { RxChevronDown, RxChevronRight } from "react-icons/rx";
 import ButtonA from "@/components/common/buttons/ButtonA"
-import ButtonB from "@/components/common/buttons/ButtonB"
 import ButtonC from "@/components/common/buttons/ButtonC"
-import ButtonD from "@/components/common/buttons/ButtonD";
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,54 +44,71 @@ const useRelume = () => {
   };
 };
 
+gsap.registerPlugin(ScrollTrigger);
+
 export function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const trigger = ScrollTrigger.create({
+      trigger: "#hero",
+      start: "bottom top",
+      onEnter: () => setScrolled(true),
+      onLeaveBack: () => setScrolled(false),
+    });
+
+    return () => trigger.kill();
+  }, []);
+
+
   const useActive = useRelume();
   return (
       <section
           id="relume"
-          className="fixed z-50 top-0 flex min-h-16 w-full items-center border-b border-border-primary bg-background px-[5%] md:min-h-18"
+          className="fixed z-50 top-4 flex w-full items-center px-4 lg:px-12 min-h-16 md:min-h-18"
       >
-        <div className="mx-auto flex size-full max-w-full items-center justify-between">
-          <a href="#" className="flex flex-row items-center gap-1">
+        <div className={scrolled ? "navbar--solid mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-8 min-h-16 lg:min-h-auto transition-colors duration-300 ease"
+            : "navbar--transparent mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-8 min-h-16 lg:min-h-auto transition-colors duration-300 ease"}>
+          <a href="/" className="flex flex-row items-center gap-1">
             <img
                 src="/logo.png"
                 alt="Logo image"
                 className="w-8 h-8 object-cover object-center"
             />
             <div className="flex flex-row items-baseline gap-1">
-              <p className="text-2xl text-foreground">AIM</p>
-              <p className="text-sm text-gray">수영로 교회</p>
+              <p className={scrolled ? "text-2xl text-foreground font-semibold transition-colors duration-300 ease" : "text-2xl text-white font-semibold transition-colors duration-300 ease"}>AIM</p>
+              <p className={`text-xs transition-colors duration-300 ease ${scrolled ? "text-gray" : "text-white"}`}>수영로 교회</p>
             </div>
           </a>
-          <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-background px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0 lg:overflow-visible">
+          <div className="absolute hidden h-screen overflow-auto px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0 lg:overflow-visible">
             <div className="flex flex-col items-center lg:flex-row">
               <a
                   href="#"
-                  className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
               >
                 About us
               </a>
               <a
                   href="#"
-                  className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
               >
                 Plan your visit
               </a>
               <a
                   href="#"
-                  className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
               >
                 Sermons
               </a>
               <a
                   href="#"
-                  className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
               >
                 Join
               </a>
               <a
                   href="#"
-                  className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
+                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
               >
                 Announcements
               </a>
@@ -101,7 +118,7 @@ export function Navbar() {
                   onMouseLeave={useActive.closeOnDesktopMoreDropdownMenu}
               >
                 <button
-                    className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
+                    className={`relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base duration-300 ease ${scrolled ? "text-foreground" : "text-white"}` }
                     onClick={useActive.openOnMobileMoreDropdownMenu}
                 >
                   <span>More</span>
@@ -134,9 +151,9 @@ export function Navbar() {
                       initial="close"
                       exit="close"
                       transition={{ duration: 0.2 }}
-                      className="bottom-auto left-0 top-full w-full min-w-full max-w-full overflow-hidden bg-background lg:absolute lg:w-screen lg:border-b lg:border-border-primary lg:px-[5%] lg:[--height-close:auto]"
+                      className="bottom-auto left-0 top-full w-full max-w-3/4 xl:max-w-2/3 overflow-hidden bg-transparent lg:absolute lg:w-screen px-12 lg:[--height-close:auto]"
                   >
-                    <div className="mx-auto flex size-full max-w-full items-center justify-between">
+                    <div className="flex size-full max-w-full items-center justify-start bg-background rounded-2xl px-8 mt-2">
                       <div className="flex w-full flex-col lg:flex-row">
                         <div className="grid flex-1 auto-cols-fr grid-cols-1 gap-x-8 gap-y-6 py-4 md:grid-cols-3 md:gap-y-0 md:py-8 lg:pr-8">
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
@@ -379,40 +396,6 @@ export function Navbar() {
                             </a>
                           </div>
                         </div>
-                        <div className="max-w-none relative mb-4 flex flex-1 p-6 md:max-w-[50rem] md:p-8 lg:mb-0 lg:max-w-xxs lg:py-8 lg:pl-8 lg:pr-0">
-                          <div className="relative z-10 grid w-full grid-cols-1 grid-rows-[auto_max-content] gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Latest Messages
-                            </h4>
-                            <div className="max-w-none grid w-full grid-cols-1 grid-rows-[auto_auto_auto_auto] items-start gap-y-2 md:block">
-                              <a href="#" className="flex flex-col py-2">
-                                <div className="relative mb-3 w-full overflow-hidden pt-[56.25%]">
-                                  <img
-                                      src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
-                                      alt="Relume placeholder image 2"
-                                      className="absolute inset-0 size-full object-cover"
-                                  />
-                                </div>
-                                <div className="mt-2 flex max-w-[18rem] flex-col justify-start md:mt-0">
-                                  <p className="text-sm">
-                                    Learn our story and values
-                                  </p>
-                                  <div className="mt-2">
-                                    <Button
-                                        title="Explore more"
-                                        variant="link"
-                                        size="link"
-                                        className="text-sm underline"
-                                    >
-                                      Explore more
-                                    </Button>
-                                  </div>
-                                </div>
-                              </a>
-                            </div>
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-auto top-0 min-w-full bg-background-secondary lg:min-w-[100vw]" />
-                        </div>
                       </div>
                     </div>
                   </motion.nav>
@@ -424,12 +407,14 @@ export function Navbar() {
               <ButtonC>Log In</ButtonC>
             </div>
           </div>
+
+          {/* Mobile */}
           <button
               className="-mr-2 flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
               onClick={useActive.toggleMobileMenu}
           >
             <motion.span
-                className="my-[3px] h-0.5 w-6 bg-black"
+                className={`my-[3px] h-0.5 w-6 ${scrolled ? "bg-black" : "bg-white"}`}
                 animate={useActive.animateMobileMenuButtonSpan}
                 variants={{
                   open: { translateY: 8, transition: { delay: 0.1 } },
@@ -442,7 +427,7 @@ export function Navbar() {
                 }}
             />
             <motion.span
-                className="my-[3px] h-0.5 w-6 bg-black"
+                className={`my-[3px] h-0.5 w-6 ${scrolled ? "bg-black" : "bg-white"}`}
                 animate={useActive.animateMobileMenu}
                 variants={{
                   open: { width: 0, transition: { duration: 0.1 } },
@@ -453,7 +438,7 @@ export function Navbar() {
                 }}
             />
             <motion.span
-                className="my-[3px] h-0.5 w-6 bg-black"
+                className={`my-[3px] h-0.5 w-6 ${scrolled ? "bg-black" : "bg-white"}`}
                 animate={useActive.animateMobileMenuButtonSpan}
                 variants={{
                   open: { translateY: -8, transition: { delay: 0.1 } },
@@ -482,9 +467,9 @@ export function Navbar() {
                 initial="close"
                 exit="close"
                 transition={{ duration: 0.4 }}
-                className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background px-[5%] pb-8 pt-4"
+                className="absolute left-0 right-0 top-0 block h-dvh overflow-auto px-4 pb-8 pt-4"
             >
-              <div className="flex flex-col">
+              <div className="flex flex-col bg-background p-8 rounded-2xl">
                 <a
                     href="#"
                     className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
@@ -775,43 +760,7 @@ export function Navbar() {
                               </a>
                             </div>
                           </div>
-                          <div className="max-w-none relative mb-4 flex flex-1 p-6 md:max-w-[50rem] md:p-8 lg:mb-0 lg:max-w-xxs lg:py-8 lg:pl-8 lg:pr-0">
-                            <div className="relative z-10 grid w-full grid-cols-1 grid-rows-[auto_max-content] gap-y-4">
-                              <h4 className="text-sm font-semibold leading-[1.3]">
-                                Featured from Blog
-                              </h4>
-                              <div className="max-w-none grid w-full grid-cols-1 grid-rows-[auto_auto_auto_auto] items-start gap-y-2 md:block">
-                                <a href="#" className="flex flex-col py-2">
-                                  <div className="relative mb-3 w-full overflow-hidden pt-[56.25%]">
-                                    <img
-                                        src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg"
-                                        alt="Relume placeholder image 2"
-                                        className="absolute inset-0 size-full object-cover"
-                                    />
-                                  </div>
-                                  <div className="mt-2 flex max-w-[18rem] flex-col justify-start md:mt-0">
-                                    <h5 className="mb-1 font-semibold">
-                                      Article Title
-                                    </h5>
-                                    <p className="text-sm">
-                                      Lorem ipsum dolor sit amet consectetur elit
-                                    </p>
-                                  </div>
-                                </a>
-                              </div>
-                              <div className="flex items-center">
-                                <Button
-                                    title="See all articles"
-                                    variant="link"
-                                    size="link"
-                                    iconRight={<RxChevronRight />}
-                                >
-                                  See all articles
-                                </Button>
-                              </div>
-                            </div>
-                            <div className="absolute bottom-0 left-0 right-auto top-0 min-w-full bg-background-secondary lg:min-w-[100vw]" />
-                          </div>
+
                         </div>
                       </div>
                     </motion.nav>

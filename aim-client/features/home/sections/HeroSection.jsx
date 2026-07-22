@@ -36,7 +36,7 @@ const HeroSection = () => {
     }
 
   return (
-      <section className="relative w-full h-screen bg-background">
+      <section id="hero" className="relative w-full h-screen bg-background">
           <div className="w-full h-full relative overflow-hidden">
               {videoError ? (
                       <Image
@@ -72,7 +72,7 @@ const HeroSection = () => {
           <div className="absolute bottom-0 left-0 w-full h-auto z-10 flex flex-col xl:flex-row items-start justify-between xl:px-16 2xl:px-32 py-16 xl:py-24 gap-6 xl:gap-0">
               { /* Left Banners */}
               <div className="
-              w-autoflex flex-col items-center xl:items-start px-8
+              w-autoflex flex-col items-center xl:items-start px-8 xl:px-0
               ">
                   <h1 className="text-4xl sm:text-5xl xl:text-7xl text-white font-anonymous text-start">
                       Antioch
