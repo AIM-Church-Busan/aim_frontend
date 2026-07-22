@@ -61,7 +61,7 @@ const Banner = () => {
         >
             <Link href="/" className="flex flex-row w-auto max-h-full gap-1 lg:gap-2">
                 <p key={current.id} className="underline">{current.title}</p>
-                <p>{formatMonthDay(current.starts_at)}</p>
+                <p>{formatMonthDay(current.starts_at)} &gt;</p>
             </Link>
             <div className="w-auto max-h-full flex flex-row gap-4">
                 <div className="w-auto max-h-full flex flex-row gap-2 lg:gap-4">

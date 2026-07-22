@@ -89,7 +89,7 @@ export function Navbar() {
             <div className="flex flex-col items-center lg:flex-row">
               <a
                   href="#"
-                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease ${scrolled ? "text-foreground" : "text-white"}`}
+                  className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease  ${scrolled ? "text-foreground" : "text-white"}`}
               >
                 About us
               </a>
