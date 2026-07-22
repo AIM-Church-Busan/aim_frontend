@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { RxChevronDown, RxChevronRight } from "react-icons/rx";
 import ButtonA from "@/components/common/buttons/ButtonA"
 import ButtonC from "@/components/common/buttons/ButtonC"
+import { useBanner } from '@/context/BannerContext'
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -47,6 +48,8 @@ const useRelume = () => {
 gsap.registerPlugin(ScrollTrigger);
 
 export function Navbar() {
+  const { isOpen } = useBanner()
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -65,11 +68,13 @@ export function Navbar() {
   return (
       <section
           id="relume"
-          className="fixed z-50 top-4 flex w-full items-center px-4 lg:px-12 min-h-16 md:min-h-18"
+          className="fixed z-48 top-4 flex w-full items-center px-4 lg:px-12 min-h-16 md:min-h-18"
       >
-        <div className={scrolled ? "navbar--solid mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-8 min-h-16 lg:min-h-auto transition-colors duration-300 ease"
-            : "navbar--transparent mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-8 min-h-16 lg:min-h-auto transition-colors duration-300 ease"}>
-          <a href="/" className="flex flex-row items-center gap-1">
+        <div className={`mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-2 lg:px-8 min-h-16 lg:min-h-auto transition-all duration-300 ease 
+        ${scrolled ? "navbar--solid" : "navbar--transparent"}
+        ${isOpen ? "mt-8" : "mt-0"}
+        `}>
+          <a href="/" className="flex flex-row items-center gap-1 ml-2 lg:ml-0">
             <img
                 src="/logo.png"
                 alt="Logo image"
@@ -153,11 +158,11 @@ export function Navbar() {
                       transition={{ duration: 0.2 }}
                       className="bottom-auto left-0 top-full w-full max-w-3/4 xl:max-w-2/3 overflow-hidden bg-transparent lg:absolute lg:w-screen px-12 lg:[--height-close:auto]"
                   >
-                    <div className="flex size-full max-w-full items-center justify-start bg-background rounded-2xl px-8 mt-2">
+                    <div className="flex size-full max-w-full items-center justify-start bg-background rounded-2xl px-8 mt-2 text-foreground">
                       <div className="flex w-full flex-col lg:flex-row">
                         <div className="grid flex-1 auto-cols-fr grid-cols-1 gap-x-8 gap-y-6 py-4 md:grid-cols-3 md:gap-y-0 md:py-8 lg:pr-8">
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
+                            <h4 className="text-sm font-semibold font-anonymous">
                               Getting started
                             </h4>
                             <a
@@ -165,11 +170,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 1"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">
@@ -185,11 +188,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 2"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Join us</h5>
@@ -203,11 +204,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 3"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">
@@ -223,11 +222,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 4"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Life groups</h5>
@@ -238,7 +235,7 @@ export function Navbar() {
                             </a>
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
+                            <h4 className="text-sm font-semibold font-anonymous">
                               Information
                             </h4>
                             <a
@@ -246,11 +243,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 5"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Announcements</h5>
@@ -264,11 +259,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 6"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Events</h5>
@@ -282,11 +275,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 7"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Contact</h5>
@@ -300,11 +291,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 8"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Giving</h5>
@@ -315,7 +304,7 @@ export function Navbar() {
                             </a>
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
+                            <h4 className="text-sm font-semibold font-anonymous">
                               Resources
                             </h4>
                             <a
@@ -323,11 +312,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 9"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">Leadership</h5>
@@ -341,11 +328,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 10"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">FAQ</h5>
@@ -359,11 +344,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 11"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">
@@ -379,11 +362,9 @@ export function Navbar() {
                                 className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
                             >
                               <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                    src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                    alt="Icon 12"
-                                    className="shrink-0"
-                                />
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 16 16">
+                                  <path fill="currentColor" d="M13.5 7.5H9.207l3.036-3.036a.5.5 0 0 0-.707-.707L8.5 6.793V2.5a.5.5 0 0 0-1 0v4.293L4.464 3.757a.5.5 0 0 0-.707.707L6.793 7.5H2.5a.5.5 0 0 0 0 1h4.293l-3.036 3.036a.5.5 0 0 0 .708.707l3.036-3.036V13.5a.5.5 0 0 0 1 0V9.207l3.036 3.036a.498.498 0 0 0 .708 0a.5.5 0 0 0 0-.707L9.209 8.5h4.293a.5.5 0 0 0 0-1H13.5Z"/>
+                                </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <h5 className="font-semibold">
@@ -410,7 +391,7 @@ export function Navbar() {
 
           {/* Mobile */}
           <button
-              className="-mr-2 flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
+              className="flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
               onClick={useActive.toggleMobileMenu}
           >
             <motion.span

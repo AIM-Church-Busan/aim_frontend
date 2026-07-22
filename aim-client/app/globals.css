@@ -24,6 +24,19 @@
   --color-gray: #9FA5AF;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #000000;
+    --color-secondary: #ffffff;
+    --color-tertiary: #8D85FF;
+    --color-background: #222222;
+    --color-foreground: #f7f6f5;
+    --color-accent: #BCEA3E;
+    --color-button: #F4F4F4;
+    --color-gray: #9FA5AF;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -39,4 +52,19 @@ body {
 
 .navbar--solid {
   background-color: var(--color-background);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out forwards;
 }
