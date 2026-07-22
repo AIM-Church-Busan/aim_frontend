@@ -36,7 +36,7 @@ const HeroSection = () => {
     }
 
   return (
-      <section className="relative w-full h-screen bg-background">
+      <section id="hero" className="relative w-full h-screen bg-background">
           <div className="w-full h-full relative overflow-hidden">
               {videoError ? (
                       <Image

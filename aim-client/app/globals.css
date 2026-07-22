@@ -32,3 +32,11 @@ body {
   font-family: var(--font-be-vietnam-pro), sans-serif;
   margin: 0;
 }
+
+.navbar--transparent {
+  background-color: transparent;
+}
+
+.navbar--solid {
+  background-color: var(--color-background);
+}
