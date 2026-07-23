@@ -11,6 +11,7 @@ import ButtonC from "@/components/common/buttons/ButtonC"
 import { useBanner } from '@/context/BannerContext'
 import FlipText from "@/components/common/effects/FlipText"
 import AimLogo from "@/components/common/AimLogo";
+import FlipWaveText from "@/components/common/effects/FlipWaveText";
 
 const useRelume = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -181,9 +182,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">
-                                  New member class
-                                </h5>
+                                <FlipWaveText className="font-semibold">New member class</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Learn what to expect on Sunday morning
                                 </p>
@@ -199,7 +198,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Join us</h5>
+                                <FlipWaveText className="font-semibold">Join us</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Explore ways to serve and connect
                                 </p>
@@ -215,9 +214,9 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">
+                                <FlipWaveText className="font-semibold">
                                   Service ministries
-                                </h5>
+                                </FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Find your place in our community
                                 </p>
@@ -233,7 +232,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Life groups</h5>
+                                <FlipWaveText className="font-semibold">Life groups</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Discover small group gatherings
                                 </p>
@@ -254,7 +253,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Announcements</h5>
+                                <FlipWaveText className="font-semibold">Announcements</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Stay updated with church news
                                 </p>
@@ -270,7 +269,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Events</h5>
+                                <FlipWaveText className="font-semibold">Events</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   See what's happening this month
                                 </p>
@@ -286,7 +285,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Contact</h5>
+                                <FlipWaveText className="font-semibold">Contact</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Reach out with questions
                                 </p>
@@ -302,7 +301,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Giving</h5>
+                                <FlipWaveText className="font-semibold">Giving</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Support our mission
                                 </p>
@@ -323,7 +322,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Leadership</h5>
+                                <FlipWaveText className="font-semibold">Leadership</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Meet our pastoral team
                                 </p>
@@ -339,7 +338,7 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">FAQ</h5>
+                                <FlipWaveText className="font-semibold">FAQ</FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Common questions answered
                                 </p>
@@ -355,9 +354,9 @@ export function Navbar() {
                                 </svg>
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">
+                                <FlipWaveText className="font-semibold">
                                   Children's ministry
-                                </h5>
+                                </FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Programs for all ages
                                 </p>
@@ -371,9 +370,9 @@ export function Navbar() {
                                 <AimLogo />
                               </div>
                               <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">
+                                <FlipWaveText className="font-semibold">
                                   Sooyoungro church
-                                </h5>
+                                </FlipWaveText>
                                 <p className="hidden text-sm md:block">
                                   Our parent church in Korea
                                 </p>
