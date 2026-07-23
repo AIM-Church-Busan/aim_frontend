@@ -48,7 +48,7 @@ const Banner = () => {
         return () => trigger.kill();
     }, []);
 
-    if (isLoading) return <p>...</p>
+    if (isLoading) return <p></p>
     if (isError) return <p>Error loading events</p>
 
     const formatMonthDay = (isoString) => {
