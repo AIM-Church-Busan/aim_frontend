@@ -48,7 +48,8 @@ const HeroSection = () => {
                       />
                   ) : (
                       <>
-                          <video ref={videoRef} loop autoPlay muted
+                          <video ref={videoRef} loop autoPlay muted preload="auto"
+                                 poster="/main_intro_poster.png"
                                  className="w-full h-full z-0 object-cover"
                                  onError={(e) => {
                                      console.log("video error!", e);
