@@ -10,8 +10,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger);
 
 const Banner = () => {
-    const { isOpen, closeBanner, openBanner } = useBanner() // scroll control
-    const [ dismissed, setDismissed] = useState(false) // Button Control
+    const { isOpen, closeBanner, openBanner, dismissed, setDismissed } = useBanner() // scroll control
+
     const [ isRemoved, setIsRemoved ] = useState(false)
 
     const visible = isOpen && !dismissed;
