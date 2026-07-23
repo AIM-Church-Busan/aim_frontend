@@ -12,6 +12,7 @@
   --color-beige: #F7F7F7;
   --font-anonymous: var(--font-anonymous-pro), monospace;
   --font-vietnam: var(--font-be-vietnam-pro), sans-serif;
+  --font-roman: "Times New Roman", Times, serif;
 }
 
 .dark {

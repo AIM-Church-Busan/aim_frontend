@@ -7,6 +7,8 @@ import Image from "next/image"
 import Link from "next/link"
 import ButtonC from "@/components/common/buttons/ButtonC"
 import ButtonB from "@/components/common/buttons/ButtonB"
+import CrossGrid from "@/components/CrossGrid";
+import CircleGrid from "@/components/CircleGrid";
 
 const HeroSection = () => {
     const videoRef = useRef(null);
@@ -72,13 +74,20 @@ const HeroSection = () => {
               )}
           </div>
 
+          {/* Flipping Motion Card */}
+          <div className="hidden absolute bottom-3/5 left-0 w-full h-1/2 z-10 translate-y-1/2 xl:flex justify-between items-end pb-24
+          xl:pb-8 pr-46 2xl:pr-56 pl-18 2xl:pl-34">
+              <CircleGrid className="xl:w-46 xl:h-46 w-32 h-40" />
+              <CrossGrid className="xl:w-48 xl:h-60 w-32 h-40" />
+          </div>
+
           {/* Banners */}
           <div className="absolute bottom-0 left-0 w-full h-auto z-10 flex flex-col xl:flex-row items-start justify-between xl:px-16 2xl:px-32 py-16 xl:py-24 gap-6 xl:gap-0">
               { /* Left Banners */}
               <div className="
               w-autoflex flex-col items-center xl:items-start px-8 xl:px-0
               ">
-                  <h1 className="text-4xl sm:text-5xl xl:text-7xl text-white font-anonymous text-start">
+                  <h1 className="text-6xl xl:text-7xl text-white font-roman text-start">
                       Antioch
                       <br/>
                       International
@@ -89,7 +98,7 @@ const HeroSection = () => {
 
               {/* Right Banner*/}
               <div className="w-full xl:max-w-2xl flex flex-col items-start xl:items-end justify-end gap-6 px-8 xl:px-0">
-                  <p className="text-start xl:text-end text-white text-lg xl:text-xl 2xl:text-2xl">
+                  <p className="text-start xl:text-end text-white text-lg xl:text-xl">
                       We are an English-speaking international church in Busan, South Korea.
                       Whether you're a student, expat, military family, or traveler, you'll find a warm community here.
                   </p>
