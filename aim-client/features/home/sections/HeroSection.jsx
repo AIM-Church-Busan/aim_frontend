@@ -90,8 +90,8 @@ const HeroSection = () => {
                       Whether you're a student, expat, military family, or traveler, you'll find a warm community here.
                   </p>
                   <div className="flex flex-row gap-4">
-                      <ButtonC href="/">Plan Your Visit</ButtonC>
-                      <ButtonB href="/">Learn More</ButtonB>
+                      <ButtonC href="/">PLAN YOUR VISIT</ButtonC>
+                      <ButtonB href="/">LEARN MORE</ButtonB>
                   </div>
               </div>
           </div>

@@ -9,6 +9,7 @@
   --color-accent: #BCEA3E;
   --color-button: #F4F4F4;
   --color-gray: #9FA5AF;
+  --color-beige: #F7F7F7;
   --font-anonymous: var(--font-anonymous-pro), monospace;
   --font-vietnam: var(--font-be-vietnam-pro), sans-serif;
 }
@@ -51,7 +52,7 @@ body {
 }
 
 .navbar--solid {
-  background-color: var(--color-background);
+  background-color: var(--color-primary);
 }
 
 @keyframes slideUp {
@@ -66,5 +67,5 @@ body {
 }
 
 .slide-up {
-  animation: slideUp 0.6s ease-out forwards;
+  animation: slideUp 0.3s ease-out forwards;
 }
