@@ -4,14 +4,21 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useBanner } from '@/context/BannerContext'
 import { useEvents } from "@/features/announcements/hooks/api/useEvents";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Banner = () => {
-    const { isOpen, toggleBanner } = useBanner()
+    const { isOpen, closeBanner, openBanner } = useBanner() // scroll control
+    const [ dismissed, setDismissed] = useState(false) // Button Control
     const [ isRemoved, setIsRemoved ] = useState(false)
 
+    const visible = isOpen && !dismissed;
+
     useEffect(() => {
-        if (isOpen) setIsRemoved(false);
-    }, [isOpen]);
+        if (visible) setIsRemoved(false);
+    }, [visible]);
 
     const { data, isLoading, isError } = useEvents(1);
 
@@ -29,6 +36,17 @@ const Banner = () => {
 
         return () => clearInterval(interval);
     }, [bannerEvents.length]);
+
+    useEffect(() => {
+        const trigger = ScrollTrigger.create({
+            trigger: "#hero",
+            start: "bottom top",
+            onEnter: () => closeBanner(),
+            onLeaveBack: () => openBanner(),
+        });
+
+        return () => trigger.kill();
+    }, []);
 
     if (isLoading) return <p>...</p>
     if (isError) return <p>Error loading events</p>
@@ -53,10 +71,10 @@ const Banner = () => {
     const { bg: currentColor, text: currentTextColor } = banners[currentIndex % banners.length];
 
     return (
-        <div className={`fixed top-0 left-0 z-50 w-full ${currentColor} ${currentTextColor} px-2 lg:px-8 py-2 flex flex-row justify-between items-center text-xs lg:text-base
-        ${isOpen ? "" : "slide-up"} ${isRemoved ? "hidden" : "block"}`}
+        <div className={`fixed top-0 left-0 z-50 w-full ${currentColor} ${currentTextColor} px-2 lg:px-8 py-2 flex flex-row justify-between items-center text-xs lg:text-sm
+        ${visible ? "" : "slide-up"} ${isRemoved ? "hidden" : "block"}`}
              onAnimationEnd={() => {
-                 if (!isOpen) setIsRemoved(true);
+                 if (!visible) setIsRemoved(true);
              }}
         >
             <Link href="/" className="flex flex-row w-auto max-h-full gap-1 lg:gap-2">
@@ -71,7 +89,7 @@ const Banner = () => {
                         </Link>
                     )}
                 </div>
-                <button onClick={toggleBanner} className="cursor-pointer"> X </button>
+                <button onClick={() => setDismissed(true)} className="cursor-pointer"> X </button>
             </div>
         </div>
     )
