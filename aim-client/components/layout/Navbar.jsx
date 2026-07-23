@@ -50,9 +50,11 @@ const useRelume = () => {
 gsap.registerPlugin(ScrollTrigger);
 
 export function Navbar() {
-  const { isOpen } = useBanner()
+  const { dismissed, isOpen } = useBanner()
 
   const [scrolled, setScrolled] = useState(false);
+
+  const visible = isOpen && !dismissed;
 
   useEffect(() => {
     const trigger = ScrollTrigger.create({
@@ -74,7 +76,7 @@ export function Navbar() {
       >
         <div className={`mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-2 lg:px-8 min-h-16 lg:min-h-auto transition-all duration-300 ease 
         ${scrolled ? "navbar--solid" : "navbar--transparent"}
-        ${isOpen ? "mt-5" : "mt-0"}
+        ${visible ? "mt-5" : "mt-0"}
         `}>
           <a href="/" className="flex flex-row items-center gap-1 ml-2 lg:ml-0">
             <img

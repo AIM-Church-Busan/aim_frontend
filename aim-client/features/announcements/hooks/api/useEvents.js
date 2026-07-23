@@ -13,5 +13,7 @@ export function useEvents(page =1 ) {
     return useQuery({
         queryKey: ["events", page],
         queryFn: () => fetchEvents(page),
+        staleTime: 10 * 60 * 1000,
+        gcTime: 30 * 60 * 1000,
     });
 }
