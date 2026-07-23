@@ -41,7 +41,7 @@ const HeroSection = () => {
               {videoError ? (
                       <Image
                         src="/main_intro_fallback.jpg"
-                        alt="fallback"
+                        alt="Members of Antioch International Ministry gathered in worship in Busan, South Korea"
                         fill
                         className="object-cover"
                         priority
@@ -50,6 +50,7 @@ const HeroSection = () => {
                       <>
                           <video ref={videoRef} loop autoPlay muted preload="auto"
                                  poster="/main_intro_poster.png"
+                                 aria-label="Introduction video of Antioch International Ministry, an English-speaking international church in Busan, South Korea"
                                  className="w-full h-full z-0 object-cover"
                                  onError={(e) => {
                                      console.log("video error!", e);
@@ -58,6 +59,8 @@ const HeroSection = () => {
                           />
                           <button
                               onClick={togglePlay}
+                              aria-label={paused ? "Play background video" : "Pause background video"}
+                              aria-pressed={!paused}
                               className="absolute bottom-12 right-8 xl:bottom-16 xl:right-14 2xl:bottom-16 2xl:right-32 z-20"
                           >
                               <PlayPauseButton paused={paused} />
