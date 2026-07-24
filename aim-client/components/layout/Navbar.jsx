@@ -387,8 +387,8 @@ export function Navbar() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <ButtonA>SIGN UP</ButtonA>
               <ButtonC>LOG IN</ButtonC>
+              <ButtonA>SIGN UP</ButtonA>
             </div>
           </div>
 
