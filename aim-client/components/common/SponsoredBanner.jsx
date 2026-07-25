@@ -12,7 +12,7 @@ const SponsoredBanner = () => {
                 className="flex items-center justify-center xl:justify-start"
             >
                 <Image
-                    src="/SooyounroChurchLogo.png"
+                    src="/SooyounroChurchLogo_mono.png"
                     alt="Sooyoungro Church"
                     width={200}
                     height={40}
@@ -40,7 +40,7 @@ const SponsoredBanner = () => {
                 className="flex items-center justify-center xl:justify-start"
             >
                 <Image
-                    src="/PCKLogo.svg"
+                    src="/PKLogo_mono.png"
                     alt="PCK 대한 예수교 장로회"
                     width={200}
                     height={40}
