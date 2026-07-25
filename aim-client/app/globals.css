@@ -89,3 +89,13 @@ body {
   background-attachment: fixed;
   background-position: block-end;
 }
+
+.custom-mark {
+  background-image: linear-gradient(to top, rgba(195, 255, 94, 0.5) 0%, rgba(195, 255, 94, 0.5) 100%);
+  background-repeat: no-repeat;
+
+  background-size: 100% 30%;
+  background-position: 0 85%; /* Places the highlight near the bottom */
+
+  display: inline;
+}

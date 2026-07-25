@@ -38,7 +38,7 @@ const ServiceAccordionItem = ({ title, bgClassName = "bg-accent", textClassName 
                 <OpenCloseButton isOpen={isOpen} onToggle={handleToggle} />
             </div>
 
-            <div className="w-full pb-6 flex flex-col gap-6">
+            <div className="w-full flex flex-col gap-6">
                 {children}
             </div>
         </motion.div>
