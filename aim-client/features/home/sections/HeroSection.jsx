@@ -97,7 +97,7 @@ const HeroSection = () => {
               </div>
 
               {/* Right Banner*/}
-              <div className="w-full xl:max-w-2xl flex flex-col items-start xl:items-end justify-end gap-6 px-8 xl:px-0">
+              <div className="w-full xl:max-w-2xl flex flex-col items-start xl:items-end justify-end gap-6 px-8 xl:px-0 pb-12 sm:pb-0">
                   <p className="text-start xl:text-end text-white text-lg xl:text-xl">
                       We are an English-speaking international church in Busan, South Korea.
                       Whether you're a student, expat, military family, or traveler, you'll find a warm community here.

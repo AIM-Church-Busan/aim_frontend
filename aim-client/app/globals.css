@@ -1,15 +1,22 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary: #ffffff;
   --color-secondary: #000000;
-  --color-tertiary: #8D85FF;
+  --color-tertiary: #9f98ff;
   --color-background: #f7f6f5;
   --color-foreground: #222222;
-  --color-accent: #BCEA3E;
+  --color-accent: #c3ff5e;
   --color-button: #F4F4F4;
   --color-gray: #9FA5AF;
   --color-beige: #F7F7F7;
+  --color-gray-light: #F7F7F7;
+  --color-white-to-dark: #ffffff;
+  --color-beige-to-black: #F7F7F7;
+  --color-beige-to-dark: #F7F7F7;
+  --color-beige-to-gray: #F7F7F7;
   --font-anonymous: var(--font-anonymous-pro), monospace;
   --font-vietnam: var(--font-be-vietnam-pro), sans-serif;
   --font-roman: "Times New Roman", Times, serif;
@@ -18,10 +25,10 @@
 .dark {
   --color-primary: #000000;
   --color-secondary: #ffffff;
-  --color-tertiary: #8D85FF;
+  --color-tertiary: #9f98ff;
   --color-background: #222222;
   --color-foreground: #f7f6f5;
-  --color-accent: #BCEA3E;
+  --color-accent: #c3ff5e;
   --color-button: #F4F4F4;
   --color-gray: #9FA5AF;
 }
@@ -30,12 +37,16 @@
   :root {
     --color-primary: #000000;
     --color-secondary: #ffffff;
-    --color-tertiary: #8D85FF;
+    --color-tertiary: #9f98ff;
     --color-background: #222222;
     --color-foreground: #f7f6f5;
-    --color-accent: #BCEA3E;
+    --color-accent: #c3ff5e;
     --color-button: #F4F4F4;
     --color-gray: #9FA5AF;
+    --color-white-to-dark: #222222;
+    --color-beige-to-black: #000000;
+    --color-beige-to-dark: #222222;
+    --color-beige-to-gray: #9FA5AF;
   }
 }
 
@@ -53,7 +64,7 @@ body {
 }
 
 .navbar--solid {
-  background-color: var(--color-primary);
+  background-color: var(--color-beige);
 }
 
 @keyframes slideUp {
