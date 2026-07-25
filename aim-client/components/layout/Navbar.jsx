@@ -29,6 +29,22 @@ const useRelume = () => {
   const openOnDesktopMoreDropdownMenu = () => { !isMobile && setIsMoreDropdownOpen(true); };
   const closeOnDesktopMoreDropdownMenu = () => { !isMobile && setIsMoreDropdownOpen(false); };
 
+  {/* Lock body scroll when mobile menu is opened */}
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    }
+  }, [isMobileMenuOpen]);
+
   {/* Close opened menus with esc key */}
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -455,7 +471,7 @@ export function Navbar() {
                 initial="close"
                 exit="close"
                 transition={{ duration: 0.4 }}
-                className="absolute left-0 right-0 top-0 block h-dvh overflow-auto px-4 pb-8 pt-4"
+                className="absolute left-0 right-0 top-0 block h-dvh overflow-auto overscroll-y-contain px-4 pb-32 pt-4"
             >
               <div className="flex flex-col bg-beige-to-black p-8 rounded-2xl">
                 <a
