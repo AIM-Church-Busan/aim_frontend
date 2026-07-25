@@ -150,7 +150,7 @@ const ServiceSection = () => {
             <div className="w-full h-auto xl:h-10/12 flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 xl:pr-12 mb-12 xl:mb-0">
                 <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-12">
                     <Label>SUNDAY SERVICE</Label>
-                    <h1 className="font-roman font-semibold text-5xl xl:text-8xl text-foreground">Join us for Sunday worship</h1>
+                    <h1 className="font-roman font-semibold text-5xl xl:text-8xl text-foreground">Join us for <br/> Sunday worship</h1>
                     <p className="text-gray font-vietnam text-lg xl:text-xl">
                         We gather each Sunday morning for worship, teaching, and community.
                         <br/>
@@ -176,7 +176,7 @@ const ServiceSection = () => {
                             <p className="font-vietnam text-base xl:text-xl text-black">
                                 We meet at 11 AM every Sunday B2. Come as you are and bring your friends.
                             </p>
-                            <LinkButton href="/" iconColor="fill-black" borderColor="border-black"/>
+                            <LinkButton href="/" iconColor="fill-white" borderColor="border-black" bgColor="bg-black"/>
                         </ServiceAccordionItem>
                     </div>
                 </div>
