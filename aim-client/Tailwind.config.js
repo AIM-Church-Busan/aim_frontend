@@ -12,5 +12,6 @@ module.exports = {
                 vietnam: ['var(--font-be-vietnam-pro)', 'sans-serif'],
             },
         }
-    }
+    },
+    darkMode: "media"
 };

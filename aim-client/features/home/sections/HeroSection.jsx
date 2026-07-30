@@ -75,11 +75,13 @@ const HeroSection = () => {
           </div>
 
           {/* Flipping Motion Card */}
+          {/*
           <div className="hidden absolute bottom-3/5 left-0 w-full h-1/2 z-10 translate-y-1/2 xl:flex justify-between items-end pb-24
           xl:pb-8 pr-46 2xl:pr-56 pl-18 2xl:pl-34">
               <CircleGrid className="xl:w-46 xl:h-46 w-32 h-40" />
               <CrossGrid className="xl:w-48 xl:h-60 w-32 h-40" />
           </div>
+          */}
 
           {/* Banners */}
           <div className="absolute bottom-0 left-0 w-full h-auto z-10 flex flex-col xl:flex-row items-start justify-between xl:px-16 2xl:px-32 py-16 xl:py-24 gap-6 xl:gap-0">
@@ -87,7 +89,7 @@ const HeroSection = () => {
               <div className="
               w-autoflex flex-col items-center xl:items-start px-8 xl:px-0
               ">
-                  <h1 className="text-6xl xl:text-7xl text-white font-roman text-start">
+                  <h1 className="text-6xl text-white font-vietnam text-start">
                       Antioch
                       <br/>
                       International

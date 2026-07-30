@@ -148,12 +148,10 @@ const ServiceSection = () => {
         <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:gap-0" ref={mobileTriggerRef}>
             {/* Left Banner */}
             <div className="w-full h-auto xl:h-10/12 flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 xl:pr-12 mb-12 xl:mb-0">
-                <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-12">
-                    <Label>SUNDAY SERVICE</Label>
-                    <h1 className="font-roman font-semibold text-5xl xl:text-7xl 2xl:text-8xl text-foreground">Join us for <br/> <span className="custom-mark">Sunday worship</span></h1>
+                <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-4">
+                    <h1 className="font-vietnam text-5xl xl:text-7xl 2xl:text-4xl text-foreground">Join us for Sunday worship</h1>
                     <p className="text-gray font-vietnam text-lg xl:text-xl">
                         We gather each Sunday morning for worship, teaching, and community.
-                        All are welcome.
                     </p>
                 </div>
                 <div className="w-full h-auto">
@@ -167,7 +165,7 @@ const ServiceSection = () => {
                     <div className="card w-full">
                         {/* Box 1 */}
                         <ServiceAccordionItem
-                            title="Sunday Morning"
+                            title="Sunday Service"
                             bgClassName="bg-accent"
                             isOpen={openItem === "sunday-morning"}
                             onToggle={toggleItem("sunday-morning")}

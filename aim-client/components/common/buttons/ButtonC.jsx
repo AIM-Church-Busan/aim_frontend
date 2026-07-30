@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 const baseClass =
-    "group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-4 py-2 text-foreground";
+    "group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-4 py-2 text-foreground active:scale-97";
 
 export default function ButtonC({ href, children = 'Get Started', className = '', ...props }) {
     const classes = `${baseClass} ${className}`.trim();

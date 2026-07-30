@@ -17,6 +17,8 @@
   --color-beige-to-black: #F7F7F7;
   --color-beige-to-dark: #F7F7F7;
   --color-beige-to-gray: #F7F7F7;
+  --color-foreground-to-black: #222222;
+  --color-gray-200-to: #E5E7EB;
   --font-anonymous: var(--font-anonymous-pro), monospace;
   --font-vietnam: var(--font-be-vietnam-pro), sans-serif;
   --font-roman: "Times New Roman", Times, serif;
@@ -42,11 +44,13 @@
     --color-foreground: #f7f6f5;
     --color-accent: #c3ff5e;
     --color-button: #F4F4F4;
-    --color-gray: #9FA5AF;
+    --color-gray: #F7F7F7;
     --color-white-to-dark: #222222;
     --color-beige-to-black: #000000;
     --color-beige-to-dark: #222222;
     --color-beige-to-gray: #9FA5AF;
+    --color-foreground-to-black: #000000;
+    --color-gray-200-to: #000000;
   }
 }
 
@@ -98,4 +102,8 @@ body {
   background-position: 0 85%; /* Places the highlight near the bottom */
 
   display: inline;
+}
+
+.input {
+  dark: #9FA5AF
 }
