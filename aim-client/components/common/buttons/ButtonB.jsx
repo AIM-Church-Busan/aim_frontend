@@ -2,7 +2,7 @@
 import Link from 'next/link';
 
 const baseClass =
-    "group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[#222222] px-4 py-2 text-white transition-colors duration-300";
+    "group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[#222222] px-4 py-2 text-white transition-colors duration-300 active:scale-97";
 
 export default function WatchDemoButton({ href, children = 'Watch Demo', className = '', ...props }) {
     const classes = `${baseClass} ${className}`.trim();
