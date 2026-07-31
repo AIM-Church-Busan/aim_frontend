@@ -150,7 +150,7 @@ const ServiceSection = () => {
             <div className="w-full h-auto xl:h-full flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 xl:pr-12 mb-12 xl:mb-0 xl:pb-4">
                 <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-6">
                     <h1 className="font-vietnam text-4xl text-foreground">☀️ Join us for Sunday worship</h1>
-                    <p className="text-gray font-vietnam text-lg xl:text-xl">
+                    <p className="text-gray font-vietnam text-lg">
                         We gather each Sunday morning for worship, teaching, and community.
                     </p>
                 </div>
@@ -170,7 +170,7 @@ const ServiceSection = () => {
                             isOpen={openItem === "sunday-morning"}
                             onToggle={toggleItem("sunday-morning")}
                         >
-                            <p className="font-vietnam text-base xl:text-xl text-black">
+                            <p className="font-vietnam text-base xl:text-lg text-black">
                                 We meet at 11 AM every Sunday B2. Come as you are and bring your friends.
                             </p>
                             <LinkButton href="/" iconColor="fill-primary" borderColor="border-transparent" bgColor="bg-secondary" />
@@ -188,8 +188,8 @@ const ServiceSection = () => {
                             onToggle={toggleItem("location")}
                         >
                             <div className="flex flex-col gap-2">
-                                <p className="font-vietnam text-base xl:text-xl text-black">27 Suyeong-ro 725beon gil, Ellev B2 Suyeong-Gu, Busan</p>
-                                <p className="font-vietnam text-base xl:text-xl text-black">
+                                <p className="font-vietnam text-base xl:text-lg text-black">27 Suyeong-ro 725beon gil, Ellev B2 Suyeong-Gu, Busan</p>
+                                <p className="font-vietnam text-base xl:text-lg text-black">
                                     We're located in central Busan, easily accessible by public transportation and parking available.
                                 </p>
                             </div>
@@ -207,7 +207,7 @@ const ServiceSection = () => {
                             isOpen={openItem === "welcoming-space"}
                             onToggle={toggleItem("welcoming-space")}
                         >
-                            <p className="font-vietnam text-base xl:text-xl text-black">
+                            <p className="font-vietnam text-base xl:text-lg text-black">
                                 Join us for lunch and coffee after the service on the 2nd floor.
                             </p>
                             <LinkButton href="/" iconColor="fill-primary" borderColor="border-transparent" bgColor="bg-secondary" />
@@ -225,7 +225,7 @@ const ServiceSection = () => {
                             isOpen={openItem === "childrens-ministry"}
                             onToggle={toggleItem("childrens-ministry")}
                         >
-                            <p className="font-vietnam text-base xl:text-xl text-primary">
+                            <p className="font-vietnam text-base xl:text-lg text-primary">
                                 15th floor before the 11:00am service.
                                 <br/>
                                 Pastor Will is serving ICM.
