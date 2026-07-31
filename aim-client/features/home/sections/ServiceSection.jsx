@@ -147,9 +147,9 @@ const ServiceSection = () => {
     <section className="w-full xl:h-screen relative flex flex-col bg-white-to-dark px-8 xl:px-12 py-24 xl:py-32" ref={sectionRef}>
         <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:gap-0" ref={mobileTriggerRef}>
             {/* Left Banner */}
-            <div className="w-full h-auto xl:h-10/12 flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 xl:pr-12 mb-12 xl:mb-0">
-                <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-4">
-                    <h1 className="font-vietnam text-5xl xl:text-7xl 2xl:text-4xl text-foreground">Join us for Sunday worship</h1>
+            <div className="w-full h-auto xl:h-full flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 xl:pr-12 mb-12 xl:mb-0 xl:pb-4">
+                <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-6">
+                    <h1 className="font-vietnam text-4xl text-foreground">☀️ Join us for Sunday worship</h1>
                     <p className="text-gray font-vietnam text-lg xl:text-xl">
                         We gather each Sunday morning for worship, teaching, and community.
                     </p>
