@@ -17,18 +17,27 @@ const LiquidBox = ({
                        children,
                        className = "w-full h-full",
                        notchSize = 64,
-                       notchColor = "fill-white-to-dark",
+                       notchColor = "fill-white",
                        position = "bottom-right",
                        showNotch = true,
+                       backgroundImage, // 새로 추가: 이미지 URL을 넘기면 배경으로 채움
                    }) => {
     const { flip, ...posOffset } = POSITION_STYLE[position] ?? POSITION_STYLE["bottom-right"]
-
-    // 로컬 좌표계의 오른쪽 아래(100% 100%)가 항상 카드 경계에 붙는 anchor 지점.
-    // 반지름을 0%(완전히 숨김) ~ 150%(박스 전체를 넉넉히 덮음)로 애니메이션.
     const radius = showNotch ? 150 : 0
 
     return (
-        <div className={`${className} relative isolate overflow-hidden`}>
+        <div
+            className={`${className} relative isolate overflow-hidden`}
+            style={
+                backgroundImage
+                    ? {
+                        backgroundImage: `url(${backgroundImage})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    }
+                    : undefined
+            }
+        >
             <div
                 className="absolute pointer-events-none"
                 style={{ width: notchSize, height: notchSize, zIndex: -1, ...posOffset, transform: flip }}

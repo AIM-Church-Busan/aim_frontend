@@ -7,6 +7,8 @@ import { useAnnouncements } from "@/features/announcements/hooks/api/useAnnounce
 import GradientButton from "@/components/common/buttons/GradientButton";
 import Image from "next/image";
 import DOMPurify from "dompurify";
+import LiquidBox from "@/components/LiquidBox";
+import LinkButton from "@/components/common/buttons/LinkButton";
 
 const SubscribeSection = () => {
     const [ email, setEmail ] = useState("");
@@ -69,7 +71,7 @@ const SubscribeSection = () => {
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="border-b border-secondary py-2 text-lg font-anonymous placeholder:text-gray-400 dark:placeholder:text-gray-200 text-secondary"
+                            className="bg-beige py-2 text-lg font-anonymous placeholder:text-gray-400 dark:placeholder:text-gray-200 text-secondary rounded-lg px-4"
                             placeholder="Email Adress"
                         />
                         <div className="w-full inline-flex gap-3">
@@ -98,24 +100,20 @@ const SubscribeSection = () => {
                         if (b.type === "event") return b.description;
                     }
 
-                    console.log(thumbnail(b));
-                    console.log(content(b));
-
                     return (
                         <div
-                            className="w-64 md:w-72 xl:w-80 shrink-0 h-full flex flex-col items-start gap-4"
+                            className="w-full xl:w-auto xl:aspect-square shrink-0 h-full xl:h-3/4 flex flex-col items-start gap-4"
                             key={`${b.type}-${b.id}`}
                         >
                             {/* Thumbnail*/}
-                            <div className="flex-1 w-full relative rounded-4xl overflow-hidden">
-                                <Image
-                                    src={thumbnail(b)}
-                                    fill
-                                    className="object-cover bg-beige-to-black"
-                                    alt={b.title}
-                                    priority
-                                />
-                            </div>
+                            <LiquidBox
+                                position="top-right"
+                                className="flex-1 w-full relative rounded-2xl overflow-hidden"
+                                backgroundImage={thumbnail(b)}
+                                notchSize={90}
+                            >
+                                <LinkButton href="/" position="top-right" />
+                            </LiquidBox>
 
                             {/* Body */}
                             <div className="flex-1 w-full flex flex-col justify-start gap-4">

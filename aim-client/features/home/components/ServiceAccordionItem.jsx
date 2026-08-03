@@ -48,7 +48,7 @@ const ServiceAccordionItem = ({
         onToggle?.(next);
     };
 
-    const innerClassName = `w-full h-full flex flex-col justify-between items-start px-4 rounded-lg xl:rounded-2xl ${bgClassName}`;
+    const innerClassName = `w-full h-full flex flex-col justify-between items-start px-4 rounded-2xl ${bgClassName}`;
 
     const header = (
         <div
@@ -71,7 +71,7 @@ const ServiceAccordionItem = ({
             initial={false}
             animate={{ height: isOpen ? "16rem" : closeHeight }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="w-full rounded-lg xl:rounded-2xl"
+            className="w-full rounded-2xl"
         >
             <LiquidBox
                 className={innerClassName}
