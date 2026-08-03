@@ -103,7 +103,7 @@ const SubscribeSection = () => {
 
                     return (
                         <div
-                            className="w-64 md:w-72 xl:w-80 shrink-0 h-full flex flex-col items-start gap-4 border border-red-500"
+                            className="w-64 md:w-72 xl:w-80 shrink-0 h-full flex flex-col items-start gap-4"
                             key={`${b.type}-${b.id}`}
                         >
                             {/* Thumbnail*/}
@@ -118,8 +118,8 @@ const SubscribeSection = () => {
                             </div>
 
                             {/* Body */}
-                            <div className="flex-1 w-full flex flex-col justify-start gap-4 border border-red-500">
-                                <h1 className="text-4xl font-vietnam text-secondary">{b.title}</h1>
+                            <div className="flex-1 w-full flex flex-col justify-start gap-4">
+                                <h1 className="text-2xl font-vietnam text-secondary">{b.title}</h1>
                                 <div
                                     className="font-vietnam text-secondary"
                                     dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content(b)) }}

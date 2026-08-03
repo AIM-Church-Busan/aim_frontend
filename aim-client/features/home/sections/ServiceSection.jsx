@@ -36,12 +36,12 @@ const ServiceSection = () => {
                 start: "top top",
                 end: "bottom top",
                 pin: true,
-                pinSpacing: true,
+                pinSpacing: false,
             });
             sectionPinTriggerRef.current = trigger;
 
             return () => {
-                trigger.kill();
+                trigger.kill(true);
                 sectionPinTriggerRef.current = null;
             };
         });
@@ -66,7 +66,7 @@ const ServiceSection = () => {
                 return; // 이번 마운트에서는 이미 봤으니 다시 안 함
             }
 
-            gsap.set(cardWrappers.slice(1), { yPercent: 430 });
+            gsap.set(cardWrappers.slice(1), { yPercent: 0 });
 
             // ---- 데스크톱: 휠 한 번(제스처 단위) = 카드 한 장 ----
             const tl = gsap.timeline({ paused: true });
@@ -92,7 +92,8 @@ const ServiceSection = () => {
                         isAnimating = false;
                         if (idx === maxIndex) {
                             hasPlayedRef.current = true;
-                            window.removeEventListener("wheel", handleWheel); // 더 이상 가로채지 않음 → 자연스럽게 스크롤 진행
+
+                            window.removeEventListener("wheel", handleWheel);
                         }
                     },
                 });
@@ -144,10 +145,10 @@ const ServiceSection = () => {
     }, []);
 
   return (
-    <section className="w-full xl:h-screen relative flex flex-col bg-white-to-dark px-8 xl:px-12 py-24 xl:py-32" ref={sectionRef}>
-        <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:gap-0" ref={mobileTriggerRef}>
+    <section className="w-full xl:h-screen relative flex flex-col bg-white-to-dark px-8 xl:px-12 pt-24 xl:pt-34 " ref={sectionRef}>
+        <div className="w-full xl:h-auto flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:gap-8" ref={mobileTriggerRef}>
             {/* Left Banner */}
-            <div className="w-full h-auto xl:h-full flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 xl:pr-12 mb-12 xl:mb-0 xl:pb-4">
+            <div className="w-full h-auto xl:h-full flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 mb-12 xl:mb-0">
                 <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-6">
                     <h1 className="font-vietnam text-4xl text-foreground">☀️ Join us for Sunday worship</h1>
                     <p className="text-gray font-vietnam text-lg">
@@ -160,13 +161,15 @@ const ServiceSection = () => {
             </div>
 
             {/* Right Banner*/}
-            <div className="w-full xl:h-full flex flex-col justify-start items-stretch gap-2 pt-0 xl:pt-12" ref={stackTriggerRef}>
+            <div className="w-full xl:h-auto flex flex-col justify-start items-stretch gap-2" ref={stackTriggerRef}>
                 <div className="card-wrapper w-full">
                     <div className="card w-full">
                         {/* Box 1 */}
                         <ServiceAccordionItem
                             title="Sunday Service"
                             bgClassName="bg-accent"
+                            notchSize={90}
+                            notchPosition="bottom-left"
                             isOpen={openItem === "sunday-morning"}
                             onToggle={toggleItem("sunday-morning")}
                         >
@@ -186,6 +189,8 @@ const ServiceSection = () => {
                             bgClassName="bg-beige-to-gray"
                             isOpen={openItem === "location"}
                             onToggle={toggleItem("location")}
+                            notchSize={90}
+                            notchPosition="bottom-left"
                         >
                             <div className="flex flex-col gap-2">
                                 <p className="font-vietnam text-base xl:text-lg text-black">27 Suyeong-ro 725beon gil, Ellev B2 Suyeong-Gu, Busan</p>
@@ -206,6 +211,8 @@ const ServiceSection = () => {
                             bgClassName="bg-tertiary"
                             isOpen={openItem === "welcoming-space"}
                             onToggle={toggleItem("welcoming-space")}
+                            notchSize={90}
+                            notchPosition="bottom-left"
                         >
                             <p className="font-vietnam text-base xl:text-lg text-black">
                                 Join us for lunch and coffee after the service on the 2nd floor.
@@ -224,6 +231,8 @@ const ServiceSection = () => {
                             textClassName="text-primary"
                             isOpen={openItem === "childrens-ministry"}
                             onToggle={toggleItem("childrens-ministry")}
+                            notchSize={90}
+                            notchPosition="bottom-left"
                         >
                             <p className="font-vietnam text-base xl:text-lg text-primary">
                                 15th floor before the 11:00am service.
