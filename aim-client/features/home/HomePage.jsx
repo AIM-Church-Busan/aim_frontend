@@ -11,7 +11,6 @@ const HomePage = () => {
       <div className="w-full h-auto bg-background overflow-x-hidden">
           <HeroSection />
           <ServiceSection />
-          <SermonSection />
           <SubscribeSection />
       </div>
   )

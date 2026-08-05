@@ -1,179 +1,67 @@
 "use client"
 
 import React, {useEffect, useState, useRef} from 'react'
-import OpenCloseButton from "@/components/common/buttons/OpenCloseButton";
 import ServiceAccordionItem from "@/features/home/components/ServiceAccordionItem";
 import LinkButton from "@/components/common/buttons/LinkButton";
 import SponsoredBanner from "@/components/common/SponsoredBanner";
 import Label from "@/components/common/Label";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const ServiceSection = () => {
-    const sectionRef = useRef(null);
-    const stackTriggerRef = useRef(null);
-    const mobileTriggerRef = useRef(null);
-    const sectionPinTriggerRef = useRef(null);
-    const hasPlayedRef = useRef(false);
-
     const [openItem, setOpenItem] = useState("sunday-morning");
 
     const toggleItem = (id) => (next) => setOpenItem(next ? id : null);
 
     const CARD_IDS = ["sunday-morning", "location", "welcoming-space", "childrens-ministry"];
 
-    {/* gsap animation - section pinning */}
-    useEffect(() => {
-        const mm = gsap.matchMedia();
-
-        mm.add("(min-width: 1280px)", () => {
-            if (hasPlayedRef.current) return;
-
-            const trigger = ScrollTrigger.create({
-                trigger: sectionRef.current,
-                start: "top top",
-                end: "bottom top",
-                pin: true,
-                pinSpacing: false,
-            });
-            sectionPinTriggerRef.current = trigger;
-
-            return () => {
-                trigger.kill(true);
-                sectionPinTriggerRef.current = null;
-            };
-        });
-
-        return () => mm.revert();
-    }, []);
-
-    {/* gsap animation - card stack (desktop only) */}
-    useEffect(() => {
-        const mm = gsap.matchMedia();
-
-        mm.add("(min-width: 1280px)", () => {
-            const cardWrappers = gsap.utils.toArray(".card-wrapper");
-            const maxIndex = CARD_IDS.length - 1;
-
-            if (hasPlayedRef.current) {
-                gsap.set(cardWrappers, { y: 0 });
-                if (sectionPinTriggerRef.current) {
-                    sectionPinTriggerRef.current.kill();
-                    sectionPinTriggerRef.current = null;
-                }
-                return; // 이번 마운트에서는 이미 봤으니 다시 안 함
-            }
-
-            gsap.set(cardWrappers.slice(1), { yPercent: 0 });
-
-            // ---- 데스크톱: 휠 한 번(제스처 단위) = 카드 한 장 ----
-            const tl = gsap.timeline({ paused: true });
-            cardWrappers.forEach((wrapper, i) => {
-                tl.to(wrapper, { yPercent: 0, ease: "none" }, i - 1);
-            });
-
-            let currentIndex = 0;
-            let isAnimating = false;
-            let gestureLocked = false;
-            let wheelIdleTimer = null;
-
-            const goTo = (idx) => {
-                isAnimating = true;
-                currentIndex = idx;
-                setOpenItem(CARD_IDS[idx]);
-
-                gsap.to(tl, {
-                    progress: (idx + 1) / CARD_IDS.length,
-                    duration: 0.7,
-                    ease: "power2.inOut",
-                    onComplete: () => {
-                        isAnimating = false;
-                        if (idx === maxIndex) {
-                            hasPlayedRef.current = true;
-
-                            window.removeEventListener("wheel", handleWheel);
-                        }
-                    },
-                });
-            };
-
-            const handleWheel = (e) => {
-                if (!sectionPinTriggerRef.current?.isActive) return;
-
-                // 이벤트 크기와 상관없이 항상 먼저 갱신 — "아직 제스처 진행 중"임을 표시
-                clearTimeout(wheelIdleTimer);
-                wheelIdleTimer = setTimeout(() => {
-                    gestureLocked = false;
-                }, 150);
-
-                if (Math.abs(e.deltaY) < 4) {
-                    e.preventDefault();
-                    return;
-                }
-
-                if (isAnimating) {
-                    e.preventDefault();
-                    return;
-                }
-
-                if (!gestureLocked) {
-                    if (e.deltaY > 0 && currentIndex < maxIndex) {
-                        e.preventDefault();
-                        gestureLocked = true;
-                        goTo(currentIndex + 1);
-                    } else if (e.deltaY < 0 && currentIndex > 0) {
-                        e.preventDefault();
-                        gestureLocked = true;
-                        goTo(currentIndex - 1);
-                    }
-                } else {
-                    e.preventDefault();
-                }
-            };
-
-            window.addEventListener("wheel", handleWheel, { passive: false });
-
-            return () => {
-                window.removeEventListener("wheel", handleWheel);
-                clearTimeout(wheelIdleTimer);
-            };
-        });
-
-        return () => mm.revert();
-    }, []);
-
   return (
-    <section className="w-full xl:h-screen relative flex flex-col bg-white-to-dark px-8 xl:px-12 pt-24 xl:pt-34 border border-red-500" ref={sectionRef}>
-        <div className="w-full xl:h-auto flex flex-col xl:flex-row justify-start xl:justify-between items-start xl:gap-8" ref={mobileTriggerRef}>
+    <section className="w-full xl:h-[120vh] relative flex flex-col bg-white-to-dark px-4 lg:px-24 2xl:px-36 pt-24 xl:pt-46 2xl:pt-80">
+        <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start xl:justify-between items-start">
             {/* Left Banner */}
-            <div className="w-full h-auto xl:h-full flex flex-col justify-start xl:justify-between items-start pt-8 md:pt-36 xl:pt-12 mb-12 xl:mb-0">
-                <div className="w-full h-auto xl:h-full flex flex-col gap-4 xl:gap-6">
-                    <h1 className="font-vietnam text-4xl text-foreground text-center xl:text-start">Join us for Sunday worship</h1>
-                    <p className="text-gray font-vietnam text-lg text-center xl:text-start">
-                        We gather each Sunday morning for worship, teaching, and community.
-                    </p>
+            <div className="w-full xl:w-1/2 h-auto flex flex-col items-start mb-12 xl:mb-0 gap-4 xl:gap-12">
+                <h1 className=" text-4xl lg:text-6xl xl:text-8xl text-foreground text-center xl:text-start">Join us for Sunday worship</h1>
+                <p className="text-gray text-lg xl:text-xl text-center xl:text-start">
+                    We gather each Sunday morning for worship, teaching, and community.
+                    <br/>
+                    Believers from every nation and language come together as one family to serve and worship.
+                </p>
+                <div className="w-full h-auto flex flex-row items-start justify-start gap-12">
+                    <div className="w-fit h-auto flex flex-row items-center justify-start gap-4">
+                        <div className="w-16 h-16 rounded-full flex flex-col justify-center items-center bg-accent">
+                            <p className="leading-[0.9] text-center font-semibold font-anonymous">11<br/>AM</p>
+                        </div>
+                        <p className="font-semibold">
+                            Every Sunday <br/> Ellev Building, 2F
+                        </p>
+                    </div>
+
+                    <div className="w-fit h-auto flex flex-row items-center justify-start gap-4">
+                        <div className="w-16 h-16 rounded-full flex flex-col justify-center items-center bg-accent">
+                            <p className="leading-[0.9] text-center font-semibold font-anonymous">10<br/>AM</p>
+                        </div>
+                        <p className="font-semibold">
+                            Children's Ministry <br/> Ellev Building, 15F
+                        </p>
+                    </div>
                 </div>
-                <div className="w-full h-auto">
+                <div className="w-full h-fit">
                     <SponsoredBanner />
                 </div>
             </div>
 
             {/* Right Banner*/}
-            <div className="w-full xl:h-auto flex flex-col justify-start items-stretch gap-2" ref={stackTriggerRef}>
+            <div className="w-full xl:w-5/12 xl:h-auto flex flex-col justify-start items-stretch gap-2">
                 <div className="card-wrapper w-full">
                     <div className="card w-full">
                         {/* Box 1 */}
                         <ServiceAccordionItem
                             title="Sunday Service"
-                            bgClassName="bg-accent"
+                            bgClassName="bg-tertiary"
                             notchSize={90}
                             notchPosition="bottom-left"
                             isOpen={openItem === "sunday-morning"}
                             onToggle={toggleItem("sunday-morning")}
                         >
-                            <p className="font-vietnam text-base xl:text-lg text-black">
+                            <p className=" text-lg xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
                                 We meet at 11 AM every Sunday B2. Come as you are and bring your friends.
                             </p>
                             <LinkButton href="/" iconColor="fill-primary" borderColor="border-transparent" bgColor="bg-secondary" positionClass="relative" />
@@ -192,9 +80,9 @@ const ServiceSection = () => {
                             notchSize={90}
                             notchPosition="bottom-left"
                         >
-                            <div className="flex flex-col gap-2">
-                                <p className="font-vietnam text-base xl:text-lg text-black">27 Suyeong-ro 725beon gil, Ellev B2 Suyeong-Gu, Busan</p>
-                                <p className="font-vietnam text-base xl:text-lg text-black">
+                            <div className="flex flex-col -mt-1">
+                                <p className=" text-lg xl:text-xl text-black" style={{ fontWeight: "500" }}>27 Suyeong-ro 725beon gil, Ellev B2 Suyeong-Gu, Busan</p>
+                                <p className=" text-lg xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
                                     We're located in central Busan, easily accessible by public transportation and parking available.
                                 </p>
                             </div>
@@ -208,13 +96,13 @@ const ServiceSection = () => {
                         {/* Box 3 */}
                         <ServiceAccordionItem
                             title="Welcoming Space"
-                            bgClassName="bg-tertiary"
+                            bgClassName="bg-accent"
                             isOpen={openItem === "welcoming-space"}
                             onToggle={toggleItem("welcoming-space")}
                             notchSize={90}
                             notchPosition="bottom-left"
                         >
-                            <p className="font-vietnam text-base xl:text-lg text-black">
+                            <p className="text-lg xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
                                 Join us for lunch and coffee after the service on the 2nd floor.
                             </p>
                             <LinkButton href="/" iconColor="fill-primary" borderColor="border-transparent" bgColor="bg-secondary" positionClass="relative" />
@@ -234,7 +122,7 @@ const ServiceSection = () => {
                             notchSize={90}
                             notchPosition="bottom-left"
                         >
-                            <p className="font-vietnam text-base xl:text-lg text-primary">
+                            <p className="text-lg xl:text-xl  text-primary pb-2" style={{ fontWeight: "500" }}>
                                 15th floor before the 11:00am service.
                                 <br/>
                                 Pastor Will is serving ICM.

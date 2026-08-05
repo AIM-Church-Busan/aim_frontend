@@ -84,12 +84,12 @@ const HeroSection = () => {
           */}
 
           {/* Banners */}
-          <div className="absolute bottom-0 left-0 w-full h-auto z-10 flex flex-col xl:flex-row items-start justify-between xl:px-16 2xl:px-32 py-16 xl:py-24 gap-6 xl:gap-0">
+          <div className="absolute bottom-0 left-0 w-full h-auto z-10 flex flex-col items-start justify-between xl:px-16 2xl:px-32 py-16 xl:py-24 gap-6 xl:gap-2">
               { /* Left Banners */}
               <div className="
               w-autoflex flex-col items-center xl:items-start px-8 xl:px-0
               ">
-                  <h1 className="text-6xl text-white font-vietnam text-start">
+                  <h1 className="text-6xl xl:text-7xl text-white text-start leading-[0.9]">
                       Antioch
                       <br/>
                       International
@@ -99,9 +99,10 @@ const HeroSection = () => {
               </div>
 
               {/* Right Banner*/}
-              <div className="w-full xl:max-w-2xl flex flex-col items-start xl:items-end justify-end gap-6 px-8 xl:px-0 pb-12 sm:pb-0">
-                  <p className="text-start xl:text-end text-white text-lg xl:text-xl">
+              <div className="w-full flex flex-col items-start justify-end gap-6 xl:gap-8 px-8 xl:px-0 pb-12 sm:pb-0 py-4">
+                  <p className="text-start text-white text-lg xl:text-xl">
                       We are an English-speaking international church in Busan, South Korea.
+                      <br/>
                       Whether you're a student, expat, military family, or traveler, you'll find a warm community here.
                   </p>
                   <div className="flex flex-row gap-4">
