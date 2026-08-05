@@ -17,7 +17,7 @@ const LiquidBox = ({
                        children,
                        className = "w-full h-full",
                        notchSize = 64,
-                       notchColor = "fill-white",
+                       notchColor = "fill-white-to-dark",
                        position = "bottom-right",
                        showNotch = true,
                        backgroundImage, // 새로 추가: 이미지 URL을 넘기면 배경으로 채움

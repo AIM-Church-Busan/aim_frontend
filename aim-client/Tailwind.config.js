@@ -10,6 +10,11 @@ module.exports = {
             fontFamily: {
                 anonymous: ['var(--font-anonymous-pro)', 'monospace'],
                 vietnam: ['var(--font-be-vietnam-pro)', 'sans-serif'],
+                inter: ['var(--font-inter)', 'sans-serif'],
+                google: ['var(--font-google-sans)', 'sans-serif'],
+                germania: ['var(--font-germania-one)', 'sans-serif'],
+                figtree: ['var(--font-fig-tree)', 'sans-serif'],
+                dongle: ['var(--font-dongle)', 'sans-serif'],
             },
         }
     },

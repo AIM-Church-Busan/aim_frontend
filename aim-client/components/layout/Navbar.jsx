@@ -102,7 +102,7 @@ export function Navbar() {
   return (
       <nav
           id="relume"
-          className="fixed z-48 top-4 flex w-full items-center px-4 lg:px-12 min-h-16 md:min-h-18"
+          className={`fixed z-48 top-8 flex w-full items-center px-4 min-h-16 md:min-h-18 transition-all duration-300 ease-in-out ${scrolled ? "lg:px-24 2xl:px-36" : "lg:px-12"}`}
       >
         <div className={`mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-2 lg:px-8 min-h-16 lg:min-h-auto transition-all duration-300 ease 
         ${scrolled ? "bg-beige-to-black" : "navbar--transparent"}
@@ -121,19 +121,19 @@ export function Navbar() {
           </a>
           <div className="absolute hidden h-screen overflow-auto px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0 lg:overflow-visible">
             <div className="flex flex-col items-center lg:flex-row">
-              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 ABOUT US
               </FlipText>
-              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 PLAN YOUR VISIT
               </FlipText>
-              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 SERMONS
               </FlipText>
-              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 JOIN
               </FlipText>
-              <FlipText href="/" className={`relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base transition-colors duration-300 ease font-anonymous font-bold ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 ANNOUNCEMENTS
               </FlipText>
 
@@ -148,7 +148,7 @@ export function Navbar() {
                     aria-haspopup="true"
                     aria-controls="desktop-more-menu"
                 >
-                  <span className="font-anonymous font-bold">MORE</span>
+                  <span className=" font-anonymous font-semibold">MORE</span>
                   <motion.span
                       animate={useActive.animateMoreDropdownMenuIcon}
                       variants={{
@@ -178,14 +178,14 @@ export function Navbar() {
                       initial="close"
                       exit="close"
                       transition={{ duration: 0.2 }}
-                      className="bottom-auto left-0 top-full w-full max-w-3/4 xl:max-w-2/3 overflow-hidden bg-transparent lg:absolute lg:w-screen px-12 lg:[--height-close:auto]"
+                      className="bottom-auto left-0 top-full w-full max-w-3/4 xl:max-w-2/3 overflow-hidden bg-transparent lg:absolute lg:w-screen lg:px-24 2xl:px-36  lg:[--height-close:auto]"
                       id="desktop-more-menu" aria-label="More menu"
                   >
                     <div className="flex size-full max-w-full items-center justify-start bg-beige-to-black dark:bg-background rounded-2xl px-8 mt-2 text-foreground">
                       <div className="flex w-full flex-col lg:flex-row">
                         <div className="grid flex-1 auto-cols-fr grid-cols-1 gap-x-8 gap-y-6 py-4 md:grid-cols-3 md:gap-y-0 md:py-8 lg:pr-8">
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold font-anonymous">
+                            <h4 className="text-sm font-anonymous font-semibold ">
                               GETTING STARTED
                             </h4>
                             <a
@@ -256,7 +256,7 @@ export function Navbar() {
                             </a>
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold font-anonymous">
+                            <h4 className="text-sm font-anonymous font-semibold">
                               INFORMATION
                             </h4>
                             <a
@@ -325,7 +325,7 @@ export function Navbar() {
                             </a>
                           </div>
                           <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold font-anonymous">
+                            <h4 className="text-sm font-anonymous font-semibold">
                               RESOURCES
                             </h4>
                             <a
@@ -402,7 +402,7 @@ export function Navbar() {
                 </AnimatePresence>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <ButtonC>LOG IN</ButtonC>
               <ButtonA>SIGN UP</ButtonA>
             </div>
@@ -543,7 +543,7 @@ export function Navbar() {
                         <div className="flex w-full flex-col lg:flex-row">
                           <div className="grid flex-1 auto-cols-fr grid-cols-1 gap-x-8 gap-y-6 py-4 md:grid-cols-3 md:gap-y-0 md:py-8 lg:pr-8">
                             <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                              <h4 className="text-sm font-semibold font-anonymous">
+                              <h4 className="text-sm font-semibold ">
                                 GETTING STARTED
                               </h4>
                               <a
@@ -616,7 +616,7 @@ export function Navbar() {
                               </a>
                             </div>
                             <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                              <h4 className="text-sm font-semibold font-anonymous">
+                              <h4 className="text-sm font-semibold ">
                                 INFORMATION
                               </h4>
                               <a
@@ -685,7 +685,7 @@ export function Navbar() {
                               </a>
                             </div>
                             <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                              <h4 className="text-sm font-semibold font-anonymous">
+                              <h4 className="text-sm font-semibold ">
                                 RESOURCES
                               </h4>
                               <a
@@ -763,10 +763,10 @@ export function Navbar() {
                   </AnimatePresence>
                 </div>
                 <div className="mt-6 flex flex-col gap-4">
-                  <Button title="Button" size="sm" className="bg-white rounded-full py-4 font-anonymous font-bold border-none">
+                  <Button title="Button" size="sm" className="bg-white rounded-full py-4   border-none">
                     LOG IN
                   </Button>
-                  <Button title="Button" variant="secondary" size="sm" className="bg-accent rounded-full py-4 font-anonymous font-bold border-none">
+                  <Button title="Button" variant="secondary" size="sm" className="bg-accent rounded-full py-4   border-none">
                     SIGN UP
                   </Button>
 

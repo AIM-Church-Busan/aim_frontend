@@ -22,6 +22,11 @@
   --font-anonymous: var(--font-anonymous-pro), monospace;
   --font-vietnam: var(--font-be-vietnam-pro), sans-serif;
   --font-roman: "Times New Roman", Times, serif;
+  --font-inter: var(--font-inter), sans-serif;
+  --font-google: var(--font-google-sans), sans-serif;
+  --font-germania: var(--font-germania-one), sans-serif;
+  --font-figtree: var(--font-fig-tree), sans-serif;
+  --font-dongle: var(--fong-dongle), sans-serif;
 }
 
 .dark {
@@ -58,9 +63,25 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: var(--font-fig-tree) !important;
+  font-weight: 400;
+}
+
 body {
-  font-family: var(--font-be-vietnam-pro), sans-serif;
   margin: 0;
+}
+
+button {
+  font-family: var(--font-fig-tree);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.button {
+  font-family: var(--font-fig-tree);
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .navbar--transparent {
@@ -102,8 +123,4 @@ body {
   background-position: 0 85%; /* Places the highlight near the bottom */
 
   display: inline;
-}
-
-.input {
-  dark: #9FA5AF
 }

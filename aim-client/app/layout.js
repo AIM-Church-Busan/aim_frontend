@@ -1,4 +1,4 @@
-import { Anonymous_Pro, Be_Vietnam_Pro } from 'next/font/google';
+import { Anonymous_Pro, Be_Vietnam_Pro, Inter, Google_Sans, Germania_One, Figtree, Dongle } from 'next/font/google';
 import './globals.css';
 import {Navbar} from "@/components/layout/Navbar";
 import Providers from "./providers";
@@ -18,6 +18,41 @@ const beVietnamPro = Be_Vietnam_Pro({
   weight: ['400', '500', '600', '700'],
   variable: '--font-be-vietnam-pro',
 });
+
+const inter = Inter({
+  subsets: [],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal','italic'],
+  variable: '--font-inter',
+});
+
+const googleSans = Google_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal','italic'],
+  variable: '--font-google-sans',
+});
+
+const germaniaOne = Germania_One({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['normal'],
+  variable: '--font-germania-one',
+});
+
+const figTree = Figtree({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal','italic'],
+  variable: '--font-fig-tree',
+});
+
+const dongle = Dongle ({
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
+  style: ['normal'],
+  variable: '--font-dongle',
+})
 
 
 export const metadata = {
@@ -65,7 +100,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${anonymousPro.variable} ${beVietnamPro.variable} h-full antialiased`}
+      className={`${anonymousPro.variable} ${beVietnamPro.variable} ${inter.variable} ${googleSans.variable} ${germaniaOne.variable} ${figTree.variable} ${dongle.variable} h-full antialiased font-figtree`}
     >
       <body className="w-full min-h-full flex flex-col">
       <Providers>
