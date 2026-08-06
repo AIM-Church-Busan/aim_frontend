@@ -123,7 +123,7 @@ export function Navbar() {
   return (
       <nav
           id="relume"
-          className={`fixed z-48 top-4 lg:top-8 flex w-full items-center px-4 min-h-16 md:min-h-18 transition-all duration-300 ease-in-out ${scrolled ? "lg:px-24 2xl:px-36" : "lg:px-12"} ${visible ? "mt-5" : "mt-0"}`}
+          className={`fixed z-48 top-4 lg:top-8 flex w-full items-center px-4 min-h-16 md:min-h-18 transition-all duration-300 ease-in-out ${scrolled ? "lg:px-8 xl:px-24 2xl:px-36" : "xl:px-12"} ${visible ? "mt-5" : "mt-0"}`}
       >
         <div className={`mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-2 lg:px-8 min-h-16 lg:min-h-auto transition-all duration-300 ease 
         ${scrolled ? "bg-beige-to-black" : "navbar--transparent"}
@@ -141,19 +141,19 @@ export function Navbar() {
           </a>
           <div className="absolute hidden h-screen overflow-auto px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0 lg:overflow-visible">
             <div className="flex flex-col items-center lg:flex-row">
-              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-2 xl:px-3 lg:py-6 text-sm xl:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 ABOUT US
               </FlipText>
-              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-2 xl:px-3 lg:py-6 text-sm xl:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 PLAN YOUR VISIT
               </FlipText>
-              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-2 xl:px-3 lg:py-6 text-sm xl:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 SERMONS
               </FlipText>
-              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-2 xl:px-3 lg:py-6 text-sm xl:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 JOIN
               </FlipText>
-              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-3 lg:py-6 lg:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
+              <FlipText href="/" className={`font-anonymous font-semibold relative block w-auto py-3 text-md lg:inline-block lg:px-2 xl:px-3 lg:py-6 text-sm xl:text-base transition-colors duration-300 ease   ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}`}>
                 ANNOUNCEMENTS
               </FlipText>
 
@@ -162,7 +162,7 @@ export function Navbar() {
                   onMouseLeave={useActive.closeOnDesktopMoreDropdownMenu}
               >
                 <button
-                    className={`relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base duration-300 ease ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}` }
+                    className={`relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-2 xl:px-4 lg:py-6 text-sm xl:text-base duration-300 ease ${scrolled ? "text-gray-400 hover:text-foreground" : "text-white"}` }
                     onClick={useActive.openOnMobileMoreDropdownMenu}
                     aria-expanded={useActive.isMoreDropdownOpen}
                     aria-haspopup="true"
@@ -198,7 +198,7 @@ export function Navbar() {
                       initial="close"
                       exit="close"
                       transition={{ duration: 0.2 }}
-                      className="bottom-auto left-0 top-full w-full max-w-3/4 xl:max-w-2/3 overflow-hidden bg-transparent lg:absolute lg:w-screen lg:px-24 2xl:px-36  lg:[--height-close:auto]"
+                      className="bottom-auto left-0 top-full w-full max-w-3/4 xl:max-w-2/3 overflow-hidden bg-transparent lg:absolute lg:w-screen lg:px-8 xl:px-24 2xl:px-36  lg:[--height-close:auto]"
                       id="desktop-more-menu" aria-label="More menu"
                   >
                     <div className="flex size-full max-w-full items-center justify-start bg-beige-to-black dark:bg-background rounded-2xl px-8 mt-2 text-foreground">

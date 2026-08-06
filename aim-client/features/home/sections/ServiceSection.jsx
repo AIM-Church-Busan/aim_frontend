@@ -17,10 +17,10 @@ const ServiceSection = () => {
     const isMobile = useIsMobile();
 
   return (
-    <section className="w-full h-auto xl:h-[120vh] relative flex flex-col bg-white-to-dark px-4 lg:px-24 2xl:px-36 pt-46 2xl:pt-80 pb-24 xl:pb-0">
-        <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start lg:justify-between items-start">
+    <section className="w-full h-auto xl:h-[120vh] relative flex flex-col bg-white-to-dark px-4 lg:px-8 xl:px-24 2xl:px-36 pt-46 2xl:pt-80 pb-24 xl:pb-0">
+        <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start lg:justify-between xl:items-start">
             {/* Left Banner */}
-            <div className="w-full xl:w-1/2 h-auto flex flex-col items-center lg:items-start mb-12 xl:mb-0 gap-4 md:gap-8 lg:gap-12">
+            <div className="w-full xl:w-1/2 h-auto flex flex-col items-center xl:items-start mb-12 xl:mb-0 gap-4 md:gap-8 lg:gap-12">
                 { isMobile
                     ? <h1 className="text-5xl lg:text-6xl 2xl:text-8xl text-foreground text-center">Join us for <br/>Sunday worship</h1>
                     : <h1 className="text-6xl 2xl:text-8xl text-foreground text-center xl:text-start">Join us for Sunday worship</h1>
@@ -33,7 +33,7 @@ const ServiceSection = () => {
 
                 {/* Labels */}
                 { isMobile ? null :
-                    <div className="w-full h-auto flex flex-row items-start justify-between lg:justify-start gap-12 px-24 lg:px-0">
+                    <div className="w-full lg:max-xl:w-1/2 h-auto flex flex-row items-start justify-between xl:justify-start gap-12 md:max-lg:px-24 xl:px-0">
                         <div className="w-fit h-auto flex flex-row items-center justify-start gap-4">
                             <div className="w-16 h-16 rounded-full flex flex-col justify-center items-center bg-accent">
                                 <p className="leading-[0.9] text-center font-semibold font-anonymous">11<br/>AM</p>
@@ -60,7 +60,7 @@ const ServiceSection = () => {
             </div>
 
             {/* Right Banner*/}
-            <div className="w-full xl:w-5/12 xl:h-auto flex flex-col justify-start items-stretch gap-2">
+            <div className="w-full xl:w-5/12 xl:h-auto flex flex-col justify-start items-stretch xl:items-stretch gap-2 md:max-xl:grid md:max-xl:grid-cols-2">
                 <div className="card-wrapper w-full">
                     <div className="card w-full">
                         {/* Box 1 */}
@@ -92,6 +92,9 @@ const ServiceSection = () => {
                             notchPosition="bottom-left"
                         >
                             <div className="flex flex-col -mt-1">
+                                <p className="text-base md:text-lg 2xl:text-xl pb-2" style={{ fontWeight: "600" }}>
+                                    27 Suyeong-ro 725beon gil, Ellev B2 Suyeong-Gu, Busan
+                                </p>
                                 <p className="text-base md:text-lg 2xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
                                     We're located in central Busan, easily accessible by public transportation and parking available.
                                 </p>
