@@ -25,8 +25,8 @@ const SponsoredBanner = () => {
                 className="font-bold text-gray-400 flex flex-row items-center gap-1 justify-center rounded-full px-3 py-2 transition-all duration-300 ease-in-out"
             >
                 <div className="w-auto h-8 max-w-full flex flex-row items-center justify-center gap-2">
-                    <p className="font-germania text-center">SIM</p>
-                    <p className="text-[10px] 2xl:text-sm font-inter text-center">International <br/>Ministry</p>
+                    <p className="font-germania text-center lg:max-xl:text-base text-lg">SIM</p>
+                    <p className="text-xs lg:max-xl:text-[10px] 2xl:text-sm font-inter text-center">International <br/>Ministry</p>
                 </div>
             </Link>
 
@@ -34,7 +34,7 @@ const SponsoredBanner = () => {
                 href="https://www.sooyoungro.org/main/new-layout/syrteam/department5.jsp"
                 className="text-gray-400 flex items-center justify-center rounded-full px-3 py-2 transition-all duration-300 ease-in-out"
             >
-                <div className="w-auto h-8 max-w-full inline-flex items-center justify-center font-dongle font-semibold text-lg 2xl:text-2xl">
+                <div className="h-8 max-w-full inline-flex items-center justify-center font-dongle font-semibold lg:max-2xl:text-lg text-2xl whitespace-nowrap">
                     <p>통일 비전 공동체</p>
                 </div>
             </Link>

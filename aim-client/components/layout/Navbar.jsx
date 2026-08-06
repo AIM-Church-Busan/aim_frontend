@@ -219,7 +219,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">New member class</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Learn what to expect on Sunday morning
                                 </p>
                               </div>
@@ -235,7 +235,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">Join us</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Explore ways to serve and connect
                                 </p>
                               </div>
@@ -253,7 +253,7 @@ export function Navbar() {
                                 <FlipWaveText className="font-semibold">
                                   Service ministries
                                 </FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Find your place in our community
                                 </p>
                               </div>
@@ -269,7 +269,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">Life groups</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Discover small group gatherings
                                 </p>
                               </div>
@@ -290,7 +290,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">Announcements</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Stay updated with church news
                                 </p>
                               </div>
@@ -306,7 +306,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">Events</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   See what's happening this month
                                 </p>
                               </div>
@@ -322,7 +322,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">Contact</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Reach out with questions
                                 </p>
                               </div>
@@ -338,7 +338,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">Giving</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Support our mission
                                 </p>
                               </div>
@@ -359,7 +359,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">Leadership</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Meet our pastoral team
                                 </p>
                               </div>
@@ -375,7 +375,7 @@ export function Navbar() {
                               </div>
                               <div className="flex flex-col items-start justify-center">
                                 <FlipWaveText className="font-semibold">FAQ</FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Common questions answered
                                 </p>
                               </div>
@@ -393,7 +393,7 @@ export function Navbar() {
                                 <FlipWaveText className="font-semibold">
                                   Children's ministry
                                 </FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Programs for all ages
                                 </p>
                               </div>
@@ -409,7 +409,7 @@ export function Navbar() {
                                 <FlipWaveText className="font-semibold">
                                   Sooyoungro church
                                 </FlipWaveText>
-                                <p className="hidden text-sm md:block">
+                                <p className="hidden text-sm md:block line-clamp-2 min-h-10">
                                   Our parent church in Korea
                                 </p>
                               </div>

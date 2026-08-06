@@ -109,7 +109,7 @@ const SubscribeSection = () => {
     }
 
     return (
-        <section className="w-auto h-auto lg:h-[90vh] xl:h-[80vh] relative flex flex-col md:flex-row xl:items-center bg-white-to-dark lg:pb-26 2xl:pb-34 gap-12 xl:gap-0 pt-24 xl:pt-0 px-4 lg:px-0">
+        <section className="w-auto h-auto lg:h-[90vh] xl:h-[80vh] relative flex flex-col md:flex-row xl:items-center bg-white-to-dark pb-26 2xl:pb-34 gap-12 xl:gap-0 pt-24 xl:pt-0 px-4 lg:px-0">
             {/* Left Banner */}
             <div className="w-full md:w-1/2 xl:w-1/3 h-fit md:h-full flex md:items-start mr-0 lg:mr-14 pl-4 lg:pl-8 xl:pl-24 2xl:pl-36">
                 <div className="w-full h-full md:h-10/12 xl:h-full flex flex-col items-start gap-4 md:gap-8 xl:gap-22">
