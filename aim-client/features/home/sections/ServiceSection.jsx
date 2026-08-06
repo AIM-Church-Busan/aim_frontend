@@ -4,7 +4,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import ServiceAccordionItem from "@/features/home/components/ServiceAccordionItem";
 import LinkButton from "@/components/common/buttons/LinkButton";
 import SponsoredBanner from "@/components/common/SponsoredBanner";
-import Label from "@/components/common/Label";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const ServiceSection = () => {
     const [openItem, setOpenItem] = useState("sunday-morning");
@@ -12,37 +12,48 @@ const ServiceSection = () => {
     const toggleItem = (id) => (next) => setOpenItem(next ? id : null);
 
     const CARD_IDS = ["sunday-morning", "location", "welcoming-space", "childrens-ministry"];
+    // 나중에 카드 스크롤 액션을 대비해 남겨두기.
+
+    const isMobile = useIsMobile();
 
   return (
-    <section className="w-full xl:h-[120vh] relative flex flex-col bg-white-to-dark px-4 lg:px-24 2xl:px-36 pt-24 xl:pt-46 2xl:pt-80">
-        <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start xl:justify-between items-start">
+    <section className="w-full h-auto xl:h-[120vh] relative flex flex-col bg-white-to-dark px-4 lg:px-24 2xl:px-36 pt-46 2xl:pt-80 pb-24 xl:pb-0">
+        <div className="w-full xl:h-full flex flex-col xl:flex-row justify-start lg:justify-between items-start">
             {/* Left Banner */}
-            <div className="w-full xl:w-1/2 h-auto flex flex-col items-start mb-12 xl:mb-0 gap-4 xl:gap-12">
-                <h1 className=" text-4xl lg:text-6xl xl:text-8xl text-foreground text-center xl:text-start">Join us for Sunday worship</h1>
-                <p className="text-gray text-lg xl:text-xl text-center xl:text-start">
+            <div className="w-full xl:w-1/2 h-auto flex flex-col items-center lg:items-start mb-12 xl:mb-0 gap-4 md:gap-8 lg:gap-12">
+                { isMobile
+                    ? <h1 className="text-5xl lg:text-6xl 2xl:text-8xl text-foreground text-center">Join us for <br/>Sunday worship</h1>
+                    : <h1 className="text-6xl 2xl:text-8xl text-foreground text-center xl:text-start">Join us for Sunday worship</h1>
+                }
+                <p className="text-gray text-base sm:text-lg xl:text-xl text-center xl:text-start">
                     We gather each Sunday morning for worship, teaching, and community.
                     <br/>
                     Believers from every nation and language come together as one family to serve and worship.
                 </p>
-                <div className="w-full h-auto flex flex-row items-start justify-start gap-12">
-                    <div className="w-fit h-auto flex flex-row items-center justify-start gap-4">
-                        <div className="w-16 h-16 rounded-full flex flex-col justify-center items-center bg-accent">
-                            <p className="leading-[0.9] text-center font-semibold font-anonymous">11<br/>AM</p>
-                        </div>
-                        <p className="font-semibold">
-                            Every Sunday <br/> Ellev Building, 2F
-                        </p>
-                    </div>
 
-                    <div className="w-fit h-auto flex flex-row items-center justify-start gap-4">
-                        <div className="w-16 h-16 rounded-full flex flex-col justify-center items-center bg-accent">
-                            <p className="leading-[0.9] text-center font-semibold font-anonymous">10<br/>AM</p>
+                {/* Labels */}
+                { isMobile ? null :
+                    <div className="w-full h-auto flex flex-row items-start justify-between lg:justify-start gap-12 px-24 lg:px-0">
+                        <div className="w-fit h-auto flex flex-row items-center justify-start gap-4">
+                            <div className="w-16 h-16 rounded-full flex flex-col justify-center items-center bg-accent">
+                                <p className="leading-[0.9] text-center font-semibold font-anonymous">11<br/>AM</p>
+                            </div>
+                            <p className="font-semibold">
+                                Every Sunday <br/> Ellev Building, 2F
+                            </p>
                         </div>
-                        <p className="font-semibold">
-                            Children's Ministry <br/> Ellev Building, 15F
-                        </p>
+
+                        <div className="w-fit h-auto flex flex-row items-center justify-start gap-4">
+                            <div className="w-16 h-16 rounded-full flex flex-col justify-center items-center bg-accent">
+                                <p className="leading-[0.9] text-center font-semibold font-anonymous">10<br/>AM</p>
+                            </div>
+                            <p className="font-semibold">
+                                Children's Ministry <br/> Ellev Building, 15F
+                            </p>
+                        </div>
                     </div>
-                </div>
+                }
+
                 <div className="w-full h-fit">
                     <SponsoredBanner />
                 </div>
@@ -61,7 +72,7 @@ const ServiceSection = () => {
                             isOpen={openItem === "sunday-morning"}
                             onToggle={toggleItem("sunday-morning")}
                         >
-                            <p className=" text-lg xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
+                            <p className="text-base md:text-lg 2xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
                                 We meet at 11 AM every Sunday B2. Come as you are and bring your friends.
                             </p>
                             <LinkButton href="/" iconColor="fill-primary" borderColor="border-transparent" bgColor="bg-secondary" positionClass="relative" />
@@ -81,8 +92,7 @@ const ServiceSection = () => {
                             notchPosition="bottom-left"
                         >
                             <div className="flex flex-col -mt-1">
-                                <p className=" text-lg xl:text-xl text-black" style={{ fontWeight: "500" }}>27 Suyeong-ro 725beon gil, Ellev B2 Suyeong-Gu, Busan</p>
-                                <p className=" text-lg xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
+                                <p className="text-base md:text-lg 2xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
                                     We're located in central Busan, easily accessible by public transportation and parking available.
                                 </p>
                             </div>
@@ -102,7 +112,7 @@ const ServiceSection = () => {
                             notchSize={90}
                             notchPosition="bottom-left"
                         >
-                            <p className="text-lg xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
+                            <p className="text-base md:text-lg 2xl:text-xl text-black pb-2" style={{ fontWeight: "500" }}>
                                 Join us for lunch and coffee after the service on the 2nd floor.
                             </p>
                             <LinkButton href="/" iconColor="fill-primary" borderColor="border-transparent" bgColor="bg-secondary" positionClass="relative" />
@@ -122,7 +132,7 @@ const ServiceSection = () => {
                             notchSize={90}
                             notchPosition="bottom-left"
                         >
-                            <p className="text-lg xl:text-xl  text-primary pb-2" style={{ fontWeight: "500" }}>
+                            <p className="text-base md:text-lg 2xl:text-xl  text-primary pb-2" style={{ fontWeight: "500" }}>
                                 15th floor before the 11:00am service.
                                 <br/>
                                 Pastor Will is serving ICM.

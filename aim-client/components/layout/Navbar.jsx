@@ -2,7 +2,7 @@
 
 import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { RxChevronDown, RxChevronRight } from "react-icons/rx";
@@ -83,6 +83,7 @@ export function Navbar() {
   const { dismissed, isOpen } = useBanner()
 
   const [scrolled, setScrolled] = useState(false);
+  const scrollTriggerRef = useRef(null);
 
   const visible = isOpen && !dismissed;
 
@@ -99,6 +100,25 @@ export function Navbar() {
 
 
   const useActive = useRelume();
+
+  // Freeze/unfreeze ScrollTrigger around the mobile menu's body scroll lock.
+  // Locking body scroll via `position: fixed` collapses the document height,
+  // which makes GSAP auto-recalculate trigger positions and misfire
+  // onLeaveBack (resetting `scrolled` to false) even though the user is
+  // still actually scrolled down. Disabling the trigger while the menu is
+  // open, then refreshing once the lock is released, prevents that.
+  useEffect(() => {
+    const trigger = scrollTriggerRef.current;
+    if (!trigger) return;
+
+    if (useActive.isMobileMenuOpen) {
+      trigger.disable(false); // false = don't revert/reset current state
+    } else {
+      trigger.enable();
+      ScrollTrigger.refresh();
+    }
+  }, [useActive.isMobileMenuOpen]);
+
   return (
       <nav
           id="relume"
@@ -115,8 +135,8 @@ export function Navbar() {
                 className="w-8 h-8 object-cover object-center"
             />
             <div className="flex flex-row items-baseline gap-1">
-              <p className={scrolled ? "text-2xl text-foreground font-semibold transition-colors duration-300 ease" : "text-2xl text-white font-semibold transition-colors duration-300 ease"}>AIM</p>
-              <p className={`text-xs transition-colors duration-300 ease ${scrolled ? "text-gray" : "text-white"}`}>수영로 교회</p>
+              <p className={scrolled ? "text-2xl text-secondary font-semibold transition-colors duration-300 ease" : "text-2xl text-white font-semibold transition-colors duration-300 ease"}>AIM</p>
+              <p className={`text-xs transition-colors duration-300 ease ${scrolled ? "text-gray" : "text-gray"}`}>수영로 교회</p>
             </div>
           </a>
           <div className="absolute hidden h-screen overflow-auto px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0 lg:overflow-visible">
@@ -763,10 +783,10 @@ export function Navbar() {
                   </AnimatePresence>
                 </div>
                 <div className="mt-6 flex flex-col gap-4">
-                  <Button title="Button" size="sm" className="bg-white rounded-full py-4   border-none">
+                  <Button title="Button" size="sm" className="button bg-white rounded-full py-4 border-none">
                     LOG IN
                   </Button>
-                  <Button title="Button" variant="secondary" size="sm" className="bg-accent rounded-full py-4   border-none">
+                  <Button title="Button" variant="secondary" size="sm" className="button bg-accent rounded-full py-4   border-none">
                     SIGN UP
                   </Button>
 

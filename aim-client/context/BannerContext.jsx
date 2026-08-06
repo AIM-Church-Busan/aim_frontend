@@ -9,11 +9,10 @@ export function BannerProvider({ children }) {
     const [dismissed, setDismissed] = useState(false);
 
     const closeBanner = () => setIsOpen(false);
-    const toggleBanner = () => setIsOpen((prev) => !prev);
     const openBanner   = () => setIsOpen(true);
 
     return (
-        <BannerContext.Provider value={{ isOpen, setIsOpen, closeBanner, toggleBanner, openBanner, dismissed, setDismissed }}>{ children }</BannerContext.Provider>
+        <BannerContext.Provider value={{ isOpen, setIsOpen, closeBanner, openBanner, dismissed, setDismissed }}>{ children }</BannerContext.Provider>
     )
 }
 
