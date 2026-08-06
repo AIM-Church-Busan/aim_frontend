@@ -94,6 +94,7 @@ export function Navbar() {
       onEnter: () => setScrolled(true),
       onLeaveBack: () => setScrolled(false),
     });
+    scrollTriggerRef.current = trigger;
 
     return () => trigger.kill();
   }, []);
@@ -122,11 +123,10 @@ export function Navbar() {
   return (
       <nav
           id="relume"
-          className={`fixed z-48 top-8 flex w-full items-center px-4 min-h-16 md:min-h-18 transition-all duration-300 ease-in-out ${scrolled ? "lg:px-24 2xl:px-36" : "lg:px-12"}`}
+          className={`fixed z-48 top-4 lg:top-8 flex w-full items-center px-4 min-h-16 md:min-h-18 transition-all duration-300 ease-in-out ${scrolled ? "lg:px-24 2xl:px-36" : "lg:px-12"} ${visible ? "mt-5" : "mt-0"}`}
       >
         <div className={`mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-2 lg:px-8 min-h-16 lg:min-h-auto transition-all duration-300 ease 
         ${scrolled ? "bg-beige-to-black" : "navbar--transparent"}
-        ${visible ? "mt-5" : "mt-0"}
         `}>
           <a href="/" className="flex flex-row items-center gap-1 ml-2 lg:ml-0">
             <img
