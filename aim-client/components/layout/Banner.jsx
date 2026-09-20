@@ -70,6 +70,8 @@ const Banner = () => {
 
     const { bg: currentColor, text: currentTextColor } = banners[currentIndex % banners.length];
 
+    console.log(data);
+
     return (
         <div className={`fixed top-0 left-0 z-50 w-full ${currentColor} ${currentTextColor} px-2 lg:px-8 py-2 flex flex-row justify-between items-center text-xs lg:text-sm
         ${visible ? "" : "slide-up"} ${isRemoved ? "hidden" : "block"}`}

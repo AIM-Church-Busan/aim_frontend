@@ -8,6 +8,7 @@ import Image from "next/image"
 import Link from "next/link"
 import ButtonC from "@/components/common/buttons/ButtonC"
 import ButtonB from "@/components/common/buttons/ButtonB"
+import api from "@/lib/axios.js"
 import CrossGrid from "@/components/CrossGrid";
 import CircleGrid from "@/components/CircleGrid";
 
@@ -64,7 +65,7 @@ const HeroSection = () => {
                               onClick={togglePlay}
                               aria-label={paused ? "Play background video" : "Pause background video"}
                               aria-pressed={!paused}
-                              className="absolute bottom-12 right-8 xl:bottom-16 xl:right-14 2xl:bottom-16 2xl:right-32 z-20"
+                              className="absolute bottom-12 right-3 xl:bottom-20 2xl:right-12 z-20"
                           >
                               <PlayPauseButton paused={paused} />
                           </button>
@@ -75,40 +76,28 @@ const HeroSection = () => {
               )}
           </div>
 
-          {/* Flipping Motion Card */}
-          {/*
-          <div className="hidden absolute bottom-3/5 left-0 w-full h-1/2 z-10 translate-y-1/2 xl:flex justify-between items-end pb-24
-          xl:pb-8 pr-46 2xl:pr-56 pl-18 2xl:pl-34">
-              <CircleGrid className="xl:w-46 xl:h-46 w-32 h-40" />
-              <CrossGrid className="xl:w-48 xl:h-60 w-32 h-40" />
-          </div>
-          */}
-
           {/* Banners */}
-          <div className="absolute bottom-0 left-0 w-full h-auto z-10 flex flex-col items-start justify-between xl:px-16 2xl:px-32 py-16 xl:py-24 gap-6 xl:gap-2">
+          <div className="absolute bottom-0 md:bottom-16 left-0 w-screen h-auto z-10 flex flex-row items-start justify-between xl:px-16 2xl:px-32 py-16 xl:py-36 gap-6 xl:gap-2">
               { /* Left Banners */}
               <div className="
-              w-autoflex flex-col items-center xl:items-start px-8 xl:px-0
+              w-auto flex flex-col items-center xl:items-start px-8 xl:px-0
               ">
-                  <h1 className="text-6xl xl:text-7xl text-white text-start leading-[0.9]">
+                  <h1 className="text-6xl xl:text-7xl text-white text-start leading-[0.9] flex flex-col justify-between items-start" style={{fontWeight: 500}}>
                       Antioch
-                      <br/>
-                      International
-                      <br/>
-                      Ministry
+                      <span className="text-white/60">International</span>
+                      <div><span className="text-white/60">Ministry</span>.</div>
                   </h1>
               </div>
 
               {/* Right Banner*/}
-              <div className="w-full flex flex-col items-start justify-end gap-6 xl:gap-8 px-8 xl:px-0 pb-12 sm:pb-0 py-4">
-                  <p className="text-start text-white text-lg xl:text-xl">
+              <div className="w-full 2xl:w-1/3 flex flex-col items-start justify-end gap-6 xl:gap-8 px-8 xl:px-0 pb-12 sm:pb-0 py-4">
+                  <p className="text-start text-white/60 text-lg xl:text-xl">
                       We are an English-speaking international church in Busan, South Korea.
-                      <br/>
-                      Whether you're a student, expat, military family, or traveler, you'll find a warm community here.
+                      
                   </p>
                   <div className="flex flex-row gap-4">
-                      <ButtonC href="/">PLAN YOUR VISIT</ButtonC>
-                      <ButtonB href="/">LEARN MORE</ButtonB>
+                      <ButtonC href="/">Plan Your Visit</ButtonC>
+                      <ButtonB href="/">Learn More</ButtonB>
                   </div>
               </div>
           </div>

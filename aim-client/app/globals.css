@@ -64,7 +64,7 @@
 }
 
 html {
-  font-family: var(--font-fig-tree) !important;
+  font-family: var(--font-inter) !important;
   font-weight: 400;
 }
 
@@ -72,14 +72,20 @@ body {
   margin: 0;
 }
 
+button {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
 .button {
-  font-family: var(--font-fig-tree);
-  font-weight: 700;
+  font-family: var(--font-inter);
+  font-weight: 500;
   letter-spacing: 0.05em;
 }
 
 .navbar--transparent {
-  background-color: transparent;
+  background-color: rgb(var(--color-beige) / 40%);
 }
 
 .navbar--solid {
