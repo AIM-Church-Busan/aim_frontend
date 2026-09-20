@@ -1,5 +1,6 @@
 "use client"
 
+import { withBasePath } from "@/lib/basePath";
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { useBulletins} from "@/features/home/hooks/api/useBulletins";
 import { useEvents } from "@/features/announcements/hooks/api/useEvents";
@@ -109,12 +110,12 @@ const SubscribeSection = () => {
     }
 
     return (
-        <section className="w-auto h-[160vh] xl:h-[80vh] relative flex flex-col md:flex-row xl:items-center bg-white-to-dark pb-20 xl:pb-26 2xl:pb-34 gap-12 xl:gap-0">
+        <section className="w-auto h-auto lg:h-[90vh] xl:h-[80vh] relative flex flex-col md:flex-row xl:items-center bg-white-to-dark pb-26 2xl:pb-34 gap-12 xl:gap-0 pt-24 xl:pt-0 px-4 lg:px-0">
             {/* Left Banner */}
-            <div className="w-full md:w-1/2 lg:w-1/3 h-fit md:h-full flex md:items-start mr-0 md:mr-14 pl-4 lg:pl-24 2xl:pl-36">
+            <div className="w-full md:w-1/2 xl:w-1/3 h-fit md:h-full flex md:items-start mr-0 lg:mr-14 pl-4 lg:pl-8 xl:pl-24 2xl:pl-36">
                 <div className="w-full h-full md:h-10/12 xl:h-full flex flex-col items-start gap-4 md:gap-8 xl:gap-22">
                     <div className="w-full h-auto flex flex-col gap-4 xl:gap-6">
-                        <h1 className=" text-6xl text-secondary">
+                        <h1 className="text-5xl md:text-6xl text-secondary">
                             Join Us.
                             <br/>
                             Come Along.
@@ -127,17 +128,17 @@ const SubscribeSection = () => {
                     </div>
                     <form
                         onSubmit={subscribe}
-                        className="w-full h-auto flex flex-row"
+                        className="w-full h-auto flex flex-col lg:flex-row gap-2 lg:gap-0"
                     >
                         <input
                             type="email"
                             required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full h-14 bg-beige border-gray-400 border py-2 text-lg font-anonymous placeholder:text-gray-400 dark:placeholder:text-gray-200 text-secondary rounded-full px-6"
+                            className="w-full h-14 bg-beige border-gray-400 border py-2 text-sm md:text-lg font-anonymous placeholder:text-gray-400 dark:placeholder:text-gray-200 text-secondary rounded-full px-6"
                             placeholder="Email Adress"
                         />
-                        <GradientButton type="subsribe" className="w-40 h-14">Subscribe</GradientButton>
+                        <GradientButton type="subsribe" className="w-full lg:w-40 h-14">Subscribe</GradientButton>
                     </form>
                 </div>
             </div>
@@ -148,7 +149,7 @@ const SubscribeSection = () => {
                     const thumbnail = (b) => {
                         if (b.thumbnail_url) return b.thumbnail_url;
                         if (b.thumbnail_path) return `https://aim-backend-cbiu.onrender.com/storage/${b.thumbnail_path}`;
-                        return "/logo.png";
+                        return withBasePath("/logo.png");
                     };
 
                     const content = (b) => {
@@ -183,7 +184,7 @@ const SubscribeSection = () => {
                             {/* Thumbnail*/}
                             <LiquidBox
                                 position="top-right"
-                                className="w-full min-h-60 relative rounded-2xl overflow-hidden"
+                                className="w-full  min-h-60 lg:min-h-50 2xl:min-h-60 relative rounded-2xl overflow-hidden"
                                 backgroundImage={thumbnail(b)}
                                 notchSize={90}
                             >
@@ -197,7 +198,7 @@ const SubscribeSection = () => {
                                 </div>
                                 <h1 className="text-2xl text-secondary" style={{ fontWeight: "500" }}>{b.title}</h1>
                                 <div
-                                    className=" text-secondary text-lg xl:text-xl"
+                                    className=" text-secondary text-sm md:text-lg 2xl:text-xl"
                                     dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content(b)) }}
                                 />
                                 <p className="text-gray-400">{createdAt(b)}</p>
@@ -207,7 +208,7 @@ const SubscribeSection = () => {
                 })}
             </div>
             {/* Draggable Scrollbar */}
-            <div className="absolute right-0 bottom-26 xl:bottom-32 2xl:bottom-40 w-2/3 px-12 pr-24 2xl:pr-36">
+            <div className="absolute right-0 bottom-12 lg:bottom-26 xl:bottom-16 2xl:bottom-40 w-1/2 xl:w-2/3 px-20 xl:px-12 xl:pr-24 2xl:pr-36">
                 <div className="relative w-full h-1.5 bg-gray-200 rounded-full mt-4 xl:mt-6">
                     <div
                         className="absolute top-1/2 -translate-y-1/2 h-2 bg-secondary rounded-full cursor-grab active:cursor-grabbing"

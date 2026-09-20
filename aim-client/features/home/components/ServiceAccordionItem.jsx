@@ -42,6 +42,7 @@ const ServiceAccordionItem = ({
     }, [isOpen, notchOpenDelay, notchCloseDelay]);
 
     const closeHeight = isDesktop ? "6rem" : "4rem";
+    const openHeight = isDesktop ? "16rem" : "18rem";
 
     const handleToggle = (next) => {
         if (!isControlled) setInternalOpen(next);
@@ -69,7 +70,7 @@ const ServiceAccordionItem = ({
     return (
         <motion.div
             initial={false}
-            animate={{ height: isOpen ? "16rem" : closeHeight }}
+            animate={{ height: isOpen ? openHeight : closeHeight }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="w-full rounded-2xl"
         >

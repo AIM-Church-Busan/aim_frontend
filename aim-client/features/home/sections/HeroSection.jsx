@@ -1,5 +1,6 @@
 "use client"
 
+import { withBasePath } from "@/lib/basePath";
 import React from 'react'
 import { useRef, useState, useEffect } from "react"
 import PlayPauseButton from "@/components/common/buttons/PlayPauseButton"
@@ -24,7 +25,7 @@ const HeroSection = () => {
         video.addEventListener("error", handleError);
 
         // Event Listener comes first before the src specification. - to prevent race condition
-        video.src = "/main_intro.mp4";
+        video.src = withBasePath("/main_intro.mp4");
 
         return () => video.removeEventListener("error", handleError);
     }, []);
@@ -43,7 +44,7 @@ const HeroSection = () => {
           <div className="w-full h-full relative overflow-hidden">
               {videoError ? (
                       <Image
-                        src="/main_intro_fallback.jpg"
+                        src={withBasePath("/main_intro_fallback.jpg")}
                         alt="Members of Antioch International Ministry gathered in worship in Busan, South Korea"
                         fill
                         className="object-cover"
@@ -52,7 +53,7 @@ const HeroSection = () => {
                   ) : (
                       <>
                           <video ref={videoRef} loop autoPlay muted preload="auto"
-                                 poster="/main_intro_poster.png"
+                                 poster={withBasePath("/main_intro_poster.png")}
                                  aria-label="Introduction video of Antioch International Ministry, an English-speaking international church in Busan, South Korea"
                                  className="w-full h-full z-0 object-cover"
                                  onError={(e) => {
