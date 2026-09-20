@@ -1,5 +1,6 @@
 "use client"
 
+import { withBasePath } from "@/lib/basePath";
 import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { useBulletins} from "@/features/home/hooks/api/useBulletins";
 import { useEvents } from "@/features/announcements/hooks/api/useEvents";
@@ -148,7 +149,7 @@ const SubscribeSection = () => {
                     const thumbnail = (b) => {
                         if (b.thumbnail_url) return b.thumbnail_url;
                         if (b.thumbnail_path) return `https://aim-backend-cbiu.onrender.com/storage/${b.thumbnail_path}`;
-                        return "/logo.png";
+                        return withBasePath("/logo.png");
                     };
 
                     const content = (b) => {
