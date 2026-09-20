@@ -2,6 +2,8 @@
 
 The official website frontend for AIM Church Busan, built with Next.js. Provides service information, sermons, announcements, and online giving for the congregation.
 
+![AIM Demo](./chrome_hUR0DWcNYC-ezgif.com-resize.gif)
+
 ## Live Demo
 
 **https://aim-church-busan.github.io/aim_frontend/**
