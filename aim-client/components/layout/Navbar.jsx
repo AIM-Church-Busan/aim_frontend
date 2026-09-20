@@ -1,5 +1,6 @@
 "use client";
 
+import { withBasePath } from "@/lib/basePath";
 import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState, useEffect, useRef } from "react";
@@ -128,9 +129,9 @@ export function Navbar() {
         <div className={`mx-auto flex size-full max-w-full items-center justify-between rounded-2xl px-2 lg:px-8 min-h-16 lg:min-h-auto transition-all duration-300 ease 
         ${scrolled ? "bg-beige-to-black" : "navbar--transparent"}
         `}>
-          <a href="/" className="flex flex-row items-center gap-1 ml-2 lg:ml-0">
+          <a href={withBasePath("/")} className="flex flex-row items-center gap-1 ml-2 lg:ml-0">
             <img
-                src="/logo.png"
+                src={withBasePath("/logo.png")}
                 alt="AIM Church"
                 className="w-8 h-8 object-cover object-center"
             />
