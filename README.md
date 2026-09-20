@@ -2,6 +2,24 @@
 
 The official website frontend for AIM Church Busan, built with Next.js. Provides service information, sermons, announcements, and online giving for the congregation.
 
+## Live Demo
+
+**https://aim-church-busan.github.io/aim_frontend/**
+
+> **Status: still under construction.** Development is ongoing. Only the **main (home) page** is complete so far. The other routes listed under [Routing Structure](#routing-structure) are planned and not built yet.
+
+## Note for the Hiring Team
+
+Thank you for taking the time to look at this project. Because the main page is the only finished page, I would especially appreciate a close look at the **Navbar**, the most interactive component built so far.
+
+- **File:** `aim-client/components/layout/Navbar.jsx`
+- **What it does:** changes its style once the hero section scrolls out of view (GSAP ScrollTrigger on `#hero`), expands the "More" menu with a Framer Motion height animation, provides a mobile menu with an accordion and body scroll lock, closes open menus with the Esc key, and shifts its position when the top banner is shown (`BannerContext`).
+- **Feedback I would value:**
+  - State management and effect cleanup (scroll trigger, event listeners, scroll lock).
+  - Accessibility: keyboard and touch support for the hover-based "More" menu, focus handling, and ARIA attributes.
+  - The body scroll-lock logic, which also runs on the first render.
+  - How to split the roughly 770-line file into smaller, reusable components.
+
 ## Tech Stack
 
 | Area | Technology |
@@ -282,3 +300,12 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 | `npm run start` | Start the production server |
 | `npm run lint` | Run ESLint |
 | `npm run format` | Format code with Prettier |
+
+## Deployment
+
+The site is published to GitHub Pages as a static export. GitHub Actions (`.github/workflows/deploy.yml`) builds and deploys it on every push to `main`.
+
+- `next.config.mjs` uses `output: "export"` and reads `basePath` from `NEXT_PUBLIC_BASE_PATH`. The workflow sets it to `/aim_frontend`; leave it empty for local development.
+- `NEXT_PUBLIC_API_URL` comes from the repository's Actions variable of the same name (Settings > Secrets and variables > Actions > Variables).
+- Files in `public/` that are referenced from code should go through `withBasePath()` (`aim-client/lib/basePath.js`) so they resolve under `/aim_frontend/`.
+- If a custom domain is added later, set `NEXT_PUBLIC_BASE_PATH` to an empty value in the workflow.
