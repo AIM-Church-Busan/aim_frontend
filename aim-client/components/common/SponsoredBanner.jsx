@@ -1,5 +1,6 @@
 "use client"
 
+import { withBasePath } from "@/lib/basePath";
 import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const SponsoredBanner = () => {
                 className="flex items-center justify-center rounded-full px-4 py-2 transition-all duration-300 ease-in-out"
             >
                 <Image
-                    src="/SooyoungroChurchLogo_mono.png"
+                    src={withBasePath("/SooyoungroChurchLogo_mono.png")}
                     alt="Sooyoungro Church"
                     width={100}
                     height={20}
@@ -44,7 +45,7 @@ const SponsoredBanner = () => {
                 className="flex items-center justify-center rounded-full px-4 py-2 transition-all duration-300 ease-in-out"
             >
                 <Image
-                    src="/PCKLogo_mono.png"
+                    src={withBasePath("/PCKLogo_mono.png")}
                     alt="PCK 대한 예수교 장로회"
                     width={100}
                     height={20}
