@@ -19,6 +19,8 @@
   --color-beige-to-gray: #F7F7F7;
   --color-foreground-to-black: #222222;
   --color-gray-200-to: #E5E7EB;
+  --font-tilt: var(--font-tilt-warp), sans-serif;
+  --font-viga: var(--font-viga-google), sans-serif;
   --font-anonymous: var(--font-anonymous-pro), monospace;
   --font-vietnam: var(--font-be-vietnam-pro), sans-serif;
   --font-roman: "Times New Roman", Times, serif;
@@ -123,4 +125,8 @@ button {
   background-position: 0 85%; /* Places the highlight near the bottom */
 
   display: inline;
+}
+
+.aim-navbar button {
+  font-family: var(--font-viga-google), sans-serif;
 }

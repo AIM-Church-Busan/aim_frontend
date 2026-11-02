@@ -1,4 +1,4 @@
-import { Anonymous_Pro, Be_Vietnam_Pro, Inter, Google_Sans, Germania_One, Figtree, Dongle } from 'next/font/google';
+import { Anonymous_Pro, Be_Vietnam_Pro, Inter, Google_Sans, Germania_One, Figtree, Dongle, Tilt_Warp, Viga } from 'next/font/google';
 import './globals.css';
 import Navbar from "@/components/layout/Navbar";
 import Providers from "./providers";
@@ -55,6 +55,17 @@ const dongle = Dongle ({
 })
 
 
+const tiltWarp = Tilt_Warp({
+  subsets: ['latin'],
+  variable: '--font-tilt-warp',
+});
+
+const viga = Viga({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-viga-google',
+});
+
 export const metadata = {
   title: {
     default: 'AIM Church',
@@ -100,7 +111,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${anonymousPro.variable} ${beVietnamPro.variable} ${inter.variable} ${googleSans.variable} ${germaniaOne.variable} ${figTree.variable} ${dongle.variable} h-full antialiased font-figtree`}
+      className={`${anonymousPro.variable} ${beVietnamPro.variable} ${inter.variable} ${googleSans.variable} ${germaniaOne.variable} ${figTree.variable} ${dongle.variable} ${tiltWarp.variable} ${viga.variable} h-full antialiased font-figtree`}
     >
       <body className="w-full min-h-full flex flex-col">
       <Providers>
