@@ -12,7 +12,7 @@ export default function DropdownContent({ menu, onNavigate, mobile = false }) {
         <Link
           href={menu.href}
           prefetch={false}
-          className={styles.introLink}
+          className={`rounded-full ${styles.introLink}`}
           onClick={onNavigate}
         >
           {menu.action}

@@ -9,9 +9,6 @@
     top 350ms ease,
     color 350ms ease;
 }
-.withBanner {
-  top: 48px;
-}
 .shell {
   position: relative;
   width: 100%;
@@ -56,6 +53,7 @@
 .brandName {
   font-family: var(--font-tilt-warp, Arial), sans-serif;
   font-size: 24px;
+  font-weight: 400;
 }
 .brandSubtitle {
   font-size: 12px;
@@ -135,7 +133,6 @@
 .signup {
   padding: 8px 16px;
   border: 1px solid transparent;
-  border-radius: 24px;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0;
@@ -203,7 +200,6 @@
   gap: 22px;
   padding: 10px 13px;
   border: 1px solid color-mix(in srgb, var(--color-foreground) 40%, transparent);
-  border-radius: 9px;
   font-size: 12px;
   text-decoration: none;
   transition: background 180ms ease;
@@ -310,7 +306,7 @@
   backdrop-filter: blur(8px);
 }
 .menuToggle {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -336,7 +332,6 @@
 .nav button:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 4px;
-  border-radius: 6px;
 }
 
 @media (min-width: 1024px) {
@@ -385,6 +380,9 @@
   }
 }
 @media (max-width: 1023px) {
+  .menuToggle {
+    display: flex;
+  }
   .expanded .shell {
     border-radius: 0 0 32px 32px;
   }
@@ -398,7 +396,7 @@
   }
   .mobilePanel {
     display: block;
-    max-height: calc(100dvh - 128px);
+    max-height: calc(100dvh - 80px);
     padding: 16px 0 32px;
     overflow-y: auto;
     overscroll-behavior: contain;

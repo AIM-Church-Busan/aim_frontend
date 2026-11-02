@@ -1,4 +1,5 @@
-import { Anonymous_Pro, Be_Vietnam_Pro, Inter, Google_Sans, Germania_One, Figtree, Dongle, Tilt_Warp, Viga } from 'next/font/google';
+import { Anonymous_Pro, Be_Vietnam_Pro, Inter, Google_Sans, Germania_One, Figtree, Dongle, Viga } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import Navbar from "@/components/layout/Navbar";
 import Providers from "./providers";
@@ -55,8 +56,11 @@ const dongle = Dongle ({
 })
 
 
-const tiltWarp = Tilt_Warp({
-  subsets: ['latin'],
+const tiltWarp = localFont({
+  src: './fonts/tilt-warp/TiltWarp.ttf',
+  weight: '400',
+  style: 'normal',
+  display: 'swap',
   variable: '--font-tilt-warp',
 });
 

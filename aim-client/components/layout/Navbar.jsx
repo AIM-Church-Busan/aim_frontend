@@ -8,7 +8,6 @@ import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { LuChevronDown } from 'react-icons/lu';
-import { useBanner } from '@/context/BannerContext';
 import { withBasePath } from '@/lib/basePath';
 import ButtonE from '@/components/common/buttons/ButtonE';
 import DropdownContent from './navigation/DropdownContent';
@@ -18,13 +17,11 @@ import styles from './navigation/Navbar.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
-  const { dismissed, isOpen } = useBanner();
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef(null);
   const toggleRef = useRef(null);
-  const openedByToggle = useRef(false);
   const triggerRefs = useRef({});
   const pathname = usePathname();
   const reducedMotion = useReducedMotion();
@@ -90,7 +87,7 @@ export default function Navbar() {
     };
     const keyboard = (event) => {
       if (event.key === 'Escape') {
-        if (mobileOpen || openedByToggle.current) toggleRef.current?.focus();
+        if (mobileOpen) toggleRef.current?.focus();
         else if (openMenu) triggerRefs.current[openMenu]?.focus();
         setOpenMenu(null);
         setMobileOpen(false);
@@ -119,7 +116,6 @@ export default function Navbar() {
   }, [mobileOpen, openMenu]);
 
   const handleTriggerKey = (event, index) => {
-    openedByToggle.current = false;
     const menu = navigationMenus[index];
     if (event.key === 'ArrowDown') {
       event.preventDefault();
@@ -147,7 +143,7 @@ export default function Navbar() {
       <nav
         ref={navRef}
         aria-label="Main navigation"
-        className={`${styles.nav} ${isOpen && !dismissed ? styles.withBanner : ''} ${scrolled || menuOpen ? styles.solid : ''} ${menuOpen ? styles.expanded : ''}`}
+        className={`${styles.nav} ${scrolled || menuOpen ? styles.solid : ''} ${menuOpen ? styles.expanded : ''}`}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget))
             setOpenMenu(null);
@@ -181,17 +177,15 @@ export default function Navbar() {
                   }}
                   id={`trigger-${menu.id}`}
                   type="button"
-                  className={`${styles.trigger} ${openMenu === menu.id ? styles.active : ''}`}
+                  className={`rounded-full ${styles.trigger} ${openMenu === menu.id ? styles.active : ''}`}
                   aria-expanded={openMenu === menu.id}
                   aria-controls={`desktop-${menu.id}`}
                   onPointerEnter={(event) => {
                     if (event.pointerType === 'mouse') {
-                      openedByToggle.current = false;
                       setOpenMenu(menu.id);
                     }
                   }}
                   onClick={(event) => {
-                    openedByToggle.current = false;
                     setOpenMenu(
                       event.detail === 0 && openMenu === menu.id
                         ? null
@@ -211,12 +205,12 @@ export default function Navbar() {
               ))}
             </div>
             <div className={styles.desktopAuth}>
-              <button type="button" className={styles.login}>
+              <button type="button" className={`rounded-full ${styles.login}`}>
                 Log In
               </button>
               <ButtonE
                 type="button"
-                className={styles.signup}
+                className={`rounded-full ${styles.signup}`}
                 aria-label="Sign Up"
               >
                 Sign Up
@@ -225,22 +219,13 @@ export default function Navbar() {
             <button
               ref={toggleRef}
               type="button"
-              className={styles.menuToggle}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
-              aria-controls={
-                mobileOpen
-                  ? 'mobile-navigation'
-                  : `desktop-${openMenu || 'more'}`
-              }
+              className={`rounded-full ${styles.menuToggle}`}
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation"
               onClick={() => {
-                openedByToggle.current = true;
-                if (window.matchMedia('(min-width: 1024px)').matches) {
-                  setOpenMenu((current) => (current ? null : 'more'));
-                } else {
-                  setMobileOpen((value) => !value);
-                  setOpenMenu(null);
-                }
+                setMobileOpen((value) => !value);
+                setOpenMenu(null);
               }}
             >
               <motion.span
@@ -281,7 +266,7 @@ export default function Navbar() {
                   <button
                     id={`mobile-trigger-${menu.id}`}
                     type="button"
-                    className={styles.mobileTrigger}
+                    className={`rounded-full ${styles.mobileTrigger}`}
                     aria-expanded={openMenu === menu.id}
                     aria-controls={`mobile-${menu.id}`}
                     onClick={() =>
@@ -311,10 +296,16 @@ export default function Navbar() {
                 </div>
               ))}
               <div className={styles.mobileAuth}>
-                <button type="button" className={styles.login}>
+                <button
+                  type="button"
+                  className={`rounded-full ${styles.login}`}
+                >
                   Log In
                 </button>
-                <button type="button" className={styles.signup}>
+                <button
+                  type="button"
+                  className={`rounded-full ${styles.signup}`}
+                >
                   Sign Up
                 </button>
               </div>
