@@ -1,7 +1,7 @@
 import { Anonymous_Pro, Be_Vietnam_Pro, Inter, Google_Sans, Germania_One, Figtree, Dongle, Viga } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
-import Navbar from "@/components/layout/Navbar";
+import NavigationBar from "@/components/layout/navigation/NavigationBar";
 import Providers from "./providers";
 import Banner from "@/components/layout/Banner";
 import { BannerProvider } from "@/context/BannerContext"
@@ -121,7 +121,7 @@ export default function RootLayout({ children }) {
       <Providers>
         <BannerProvider>
           <Banner />
-          <Navbar />
+          <NavigationBar />
           {children}
         </BannerProvider>
       </Providers>
