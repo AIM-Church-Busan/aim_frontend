@@ -7,9 +7,10 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { LuChevronDown, LuMenu, LuX } from 'react-icons/lu';
+import { LuChevronDown } from 'react-icons/lu';
 import { useBanner } from '@/context/BannerContext';
 import { withBasePath } from '@/lib/basePath';
+import ButtonE from '@/components/common/buttons/ButtonE';
 import DropdownContent from './navigation/DropdownContent';
 import { navigationMenus } from './navigation/menus';
 import styles from './navigation/Navbar.module.css';
@@ -23,12 +24,14 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const navRef = useRef(null);
   const toggleRef = useRef(null);
+  const openedByToggle = useRef(false);
   const triggerRefs = useRef({});
   const pathname = usePathname();
   const reducedMotion = useReducedMotion();
   const activeMenu = navigationMenus.find((menu) => menu.id === openMenu);
+  const menuOpen = Boolean(activeMenu || mobileOpen);
   const transition = {
-    duration: reducedMotion ? 0 : 0.22,
+    duration: reducedMotion ? 0 : 0.35,
     ease: [0.4, 0, 0.2, 1],
   };
 
@@ -69,7 +72,7 @@ export default function Navbar() {
   }, [mobileOpen]);
 
   useEffect(() => {
-    const breakpoint = window.matchMedia('(min-width: 1100px)');
+    const breakpoint = window.matchMedia('(min-width: 1024px)');
     const reset = () => {
       setOpenMenu(null);
       setMobileOpen(false);
@@ -87,7 +90,7 @@ export default function Navbar() {
     };
     const keyboard = (event) => {
       if (event.key === 'Escape') {
-        if (mobileOpen) toggleRef.current?.focus();
+        if (mobileOpen || openedByToggle.current) toggleRef.current?.focus();
         else if (openMenu) triggerRefs.current[openMenu]?.focus();
         setOpenMenu(null);
         setMobileOpen(false);
@@ -116,6 +119,7 @@ export default function Navbar() {
   }, [mobileOpen, openMenu]);
 
   const handleTriggerKey = (event, index) => {
+    openedByToggle.current = false;
     const menu = navigationMenus[index];
     if (event.key === 'ArrowDown') {
       event.preventDefault();
@@ -143,14 +147,7 @@ export default function Navbar() {
       <nav
         ref={navRef}
         aria-label="Main navigation"
-        className={`${styles.nav} ${isOpen && !dismissed ? styles.withBanner : ''} ${scrolled || activeMenu || mobileOpen ? styles.solid : ''}`}
-        onPointerLeave={(event) => {
-          if (
-            event.pointerType === 'mouse' &&
-            window.matchMedia('(min-width: 1100px)').matches
-          )
-            setOpenMenu(null);
-        }}
+        className={`${styles.nav} ${isOpen && !dismissed ? styles.withBanner : ''} ${scrolled || menuOpen ? styles.solid : ''} ${menuOpen ? styles.expanded : ''}`}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget))
             setOpenMenu(null);
@@ -170,8 +167,10 @@ export default function Navbar() {
                 width={32}
                 height={32}
               />
-              <span className={styles.brandName}>AIM</span>
-              <span className={styles.brandSubtitle}>수영로 교회</span>
+              <span className={styles.brandCopy}>
+                <span className={styles.brandName}>AIM</span>
+                <span className={styles.brandSubtitle}>수영로 교회</span>
+              </span>
             </Link>
             <div className={styles.desktopNav}>
               {navigationMenus.map((menu, index) => (
@@ -186,19 +185,28 @@ export default function Navbar() {
                   aria-expanded={openMenu === menu.id}
                   aria-controls={`desktop-${menu.id}`}
                   onPointerEnter={(event) => {
-                    if (event.pointerType === 'mouse') setOpenMenu(menu.id);
+                    if (event.pointerType === 'mouse') {
+                      openedByToggle.current = false;
+                      setOpenMenu(menu.id);
+                    }
                   }}
-                  onClick={(event) =>
+                  onClick={(event) => {
+                    openedByToggle.current = false;
                     setOpenMenu(
                       event.detail === 0 && openMenu === menu.id
                         ? null
                         : menu.id,
-                    )
-                  }
+                    );
+                  }}
                   onKeyDown={(event) => handleTriggerKey(event, index)}
                 >
-                  {menu.label}
-                  <LuChevronDown aria-hidden="true" />
+                  <span className={styles.triggerLabel}>
+                    <span className={styles.triggerText}>
+                      <span>{menu.label}</span>
+                      <span aria-hidden="true">{menu.label}</span>
+                    </span>
+                  </span>
+                  {menu.id === 'more' && <LuChevronDown aria-hidden="true" />}
                 </button>
               ))}
             </div>
@@ -206,27 +214,45 @@ export default function Navbar() {
               <button type="button" className={styles.login}>
                 Log In
               </button>
-              <button type="button" className={styles.signup}>
+              <ButtonE
+                type="button"
+                className={styles.signup}
+                aria-label="Sign Up"
+              >
                 Sign Up
-              </button>
+              </ButtonE>
             </div>
             <button
               ref={toggleRef}
               type="button"
-              className={styles.mobileToggle}
-              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-navigation"
+              className={styles.menuToggle}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              aria-controls={
+                mobileOpen
+                  ? 'mobile-navigation'
+                  : `desktop-${openMenu || 'more'}`
+              }
               onClick={() => {
-                setMobileOpen((value) => !value);
-                setOpenMenu(null);
+                openedByToggle.current = true;
+                if (window.matchMedia('(min-width: 1024px)').matches) {
+                  setOpenMenu((current) => (current ? null : 'more'));
+                } else {
+                  setMobileOpen((value) => !value);
+                  setOpenMenu(null);
+                }
               }}
             >
-              {mobileOpen ? (
-                <LuX aria-hidden="true" />
-              ) : (
-                <LuMenu aria-hidden="true" />
-              )}
+              <motion.span
+                className={styles.toggleLine}
+                animate={{ y: menuOpen ? 3.5 : 0, rotate: menuOpen ? 45 : 0 }}
+                transition={transition}
+              />
+              <motion.span
+                className={styles.toggleLine}
+                animate={{ y: menuOpen ? -3.5 : 0, rotate: menuOpen ? -45 : 0 }}
+                transition={transition}
+              />
             </button>
           </div>
           {activeMenu && (

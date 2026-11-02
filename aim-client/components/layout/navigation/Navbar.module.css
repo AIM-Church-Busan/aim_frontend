@@ -1,45 +1,45 @@
 .nav {
   position: fixed;
-  top: 32px;
-  left: 24px;
-  right: 24px;
-  z-index: 60;
-  max-width: 1280px;
-  margin-inline: auto;
-  color: var(--color-foreground);
-  font-family: var(--font-fig-tree, Arial), sans-serif;
-  transition: top 220ms ease;
+  inset-inline: 0;
+  top: 0;
+  z-index: 48;
+  color: #fff;
+  font-family: var(--font-viga-google, Arial), sans-serif;
+  transition:
+    top 350ms ease,
+    color 350ms ease;
 }
 .withBanner {
-  top: 52px;
+  top: 48px;
 }
 .shell {
-  border-radius: 30px;
-  background: color-mix(in srgb, var(--color-beige-to-black) 65%, transparent);
-  box-shadow: 0 8px 32px #0000000a;
-  backdrop-filter: blur(24px) saturate(150%);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-inline: 24px;
+  background: transparent;
   transition:
-    background 220ms ease,
-    box-shadow 220ms ease;
+    background 350ms ease,
+    border-radius 350ms ease;
 }
-.solid .shell,
-.shell:hover,
-.shell:focus-within {
-  background: var(--color-beige-to-black);
-  box-shadow: 0 14px 48px #0000000d;
+.solid {
+  color: var(--color-foreground);
+}
+.expanded .shell {
+  background: var(--color-white-to-dark);
+  border-radius: 0 0 48px 48px;
 }
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  min-height: 60px;
-  padding: 6px 12px 6px 20px;
+  gap: 24px;
+  min-height: 80px;
 }
 .brand {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   flex-shrink: 0;
   text-decoration: none;
 }
@@ -48,41 +48,44 @@
   height: 32px;
   object-fit: contain;
 }
+.brandCopy {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
 .brandName {
+  font-family: var(--font-tilt-warp, Arial), sans-serif;
   font-size: 24px;
-  letter-spacing: -1px;
 }
 .brandSubtitle {
-  font-size: 10px;
-  align-self: center;
+  font-size: 12px;
 }
 .desktopNav {
   display: flex;
+  flex: 1;
   align-items: center;
-  gap: 2px;
 }
 .trigger {
   position: relative;
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 14px 10px;
+  padding: 12px;
   border: 0;
   background: transparent;
   color: inherit;
-  font-size: 13px;
-  letter-spacing: -0.2px;
+  font-size: 14px;
+  letter-spacing: 0;
   white-space: nowrap;
   cursor: pointer;
 }
 .trigger::after {
   content: '';
   position: absolute;
-  bottom: 7px;
-  left: 10px;
-  right: 26px;
+  bottom: 9px;
+  left: 12px;
+  right: 12px;
   height: 2px;
-  border-radius: 50%;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left;
@@ -90,6 +93,25 @@
 }
 .trigger.active::after {
   transform: scaleX(1);
+}
+.triggerLabel {
+  display: block;
+  height: 24px;
+  overflow: hidden;
+  line-height: 24px;
+}
+.triggerText {
+  display: flex;
+  flex-direction: column;
+  transition: transform 200ms linear;
+}
+.triggerText > span {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+}
+.trigger:hover .triggerText {
+  transform: translateY(-24px);
 }
 .trigger svg,
 .mobileTrigger svg {
@@ -104,16 +126,18 @@
 }
 .desktopAuth {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   align-items: center;
   flex-shrink: 0;
+  margin-left: auto;
 }
 .login,
 .signup {
-  padding: 11px 16px;
-  border: 0;
+  padding: 8px 16px;
+  border: 1px solid transparent;
   border-radius: 24px;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 24px;
   letter-spacing: 0;
   white-space: nowrap;
   cursor: pointer;
@@ -123,14 +147,21 @@
   color: inherit;
 }
 .signup {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+.solid .signup {
   background: var(--color-accent);
   color: #222;
+  border-color: transparent;
 }
 .login:hover {
-  background: color-mix(in srgb, var(--color-foreground) 6%, transparent);
+  color: #9ca3af;
 }
 .signup:hover {
-  background: #b4ef4c;
+  background: var(--color-accent);
+  color: #222;
 }
 .desktopPanel {
   overflow: hidden;
@@ -139,7 +170,7 @@
   display: grid;
   grid-template-columns: minmax(220px, 0.85fr) 2.15fr;
   gap: 44px;
-  padding: 42px 40px 48px;
+  padding: 42px 0 48px;
 }
 .intro {
   padding-right: 10px;
@@ -274,11 +305,30 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  z-index: 59;
-  background: #00000018;
-  backdrop-filter: blur(7px);
+  z-index: 40;
+  background: #00000026;
+  backdrop-filter: blur(8px);
 }
-.mobileToggle,
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 6px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.toggleLine {
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+}
 .mobilePanel {
   display: none;
 }
@@ -289,11 +339,18 @@
   border-radius: 6px;
 }
 
+@media (min-width: 1024px) {
+  .shell {
+    padding-inline: 48px;
+  }
+}
 @media (min-width: 1280px) {
+  .shell {
+    padding-inline: 64px;
+  }
   .content {
     grid-template-columns: minmax(240px, 0.9fr) 2.1fr;
     gap: 52px;
-    padding-inline: 48px;
   }
   .links {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -306,18 +363,30 @@
     display: none;
   }
 }
-@media (max-width: 1099px) {
-  .nav {
-    left: 16px;
-    right: 16px;
-    top: 24px;
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header {
+    gap: 12px;
   }
-  .withBanner {
-    top: 46px;
+  .trigger {
+    padding-inline: 8px;
+    font-size: 13px;
   }
-  .shell {
-    background: var(--color-beige-to-black);
-    border-radius: 28px;
+  .trigger::after {
+    left: 8px;
+    right: 8px;
+  }
+  .desktopAuth {
+    gap: 4px;
+  }
+  .login,
+  .signup {
+    padding-inline: 12px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 1023px) {
+  .expanded .shell {
+    border-radius: 0 0 32px 32px;
   }
   .desktopNav,
   .desktopAuth,
@@ -325,28 +394,12 @@
     display: none;
   }
   .header {
-    padding: 4px 8px 4px 16px;
-    min-height: 56px;
-  }
-  .mobileToggle {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    border: 0;
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
-  }
-  .mobileToggle svg {
-    width: 23px;
-    height: 23px;
-    stroke-width: 1.5;
+    justify-content: space-between;
   }
   .mobilePanel {
     display: block;
-    max-height: calc(100dvh - 120px);
-    padding: 8px 20px 24px;
+    max-height: calc(100dvh - 128px);
+    padding: 16px 0 32px;
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -433,6 +486,9 @@
   .mobileAuth button {
     flex: 1;
     padding-block: 14px;
+  }
+  .mobileAuth .login {
+    border-color: color-mix(in srgb, var(--color-foreground) 20%, transparent);
   }
 }
 @media (max-width: 540px) {
